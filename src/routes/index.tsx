@@ -89,12 +89,11 @@ function HomePage() {
               </a>
             </div>
           </div>
-          <div className="relative">
-            <div className="absolute -inset-4 rounded-full bg-gold/10 blur-2xl" />
+          <div className="flex items-center justify-center">
             <img
               src={logoAsset.url}
               alt="Logo Cabinet Dandelion"
-              className="relative mx-auto w-full max-w-md rounded-3xl shadow-2xl"
+              className="mx-auto w-full max-w-sm"
             />
           </div>
         </div>
