@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Calendar, MapPin, Phone, Clock, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
+import { Calendar, MapPin, Phone, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
 import logoAsset from "@/assets/logo.jpg.asset.json";
 import afficheAsset from "@/assets/affiche-orthodontie.png.asset.json";
 import cabinet1 from "@/assets/cabinet-1.jpg";
 import cabinet2 from "@/assets/cabinet-2.jpg";
 import cabinet3 from "@/assets/cabinet-3.jpg";
+import drDetantAsset from "@/assets/dr-detant.webp.asset.json";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -107,25 +108,35 @@ function HomePage() {
           </h2>
           <GoldDivider />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Diplômé en Orthopédie Dento-Faciale, le Dr Détant met son expertise au service
-            de tous les âges, avec des traitements adaptés et personnalisés.
+            Diplômé en Orthopédie Dento-Faciale, ancien interne des Hôpitaux de Toulouse,
+            le Dr Détant met son expertise au service de tous les âges, avec des traitements
+            adaptés et personnalisés.
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto mt-16 grid md:grid-cols-3 gap-6">
-          {[
-            { icon: GraduationCap, title: "Spécialiste qualifié", text: "Diplôme de spécialiste en Orthopédie Dento-Faciale (ODF)." },
-            { icon: Sparkles, title: "Traitements modernes", text: "Multi-attaches, gouttières transparentes, traitements interceptifs." },
-            { icon: Clock, title: "Suivi personnalisé", text: "Un accompagnement à chaque étape, de la première consultation au résultat." },
-          ].map(({ icon: Icon, title, text }) => (
-            <div key={title} className="bg-card border border-border rounded-2xl p-8 hover:border-gold/50 transition group">
-              <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center text-primary group-hover:bg-gold/10 group-hover:text-gold transition">
-                <Icon className="w-6 h-6" />
+        <div className="max-w-6xl mx-auto mt-16 grid md:grid-cols-2 gap-10 items-center">
+          <div className="relative order-1">
+            <div className="absolute -inset-3 rounded-3xl bg-gold/10 blur-2xl" />
+            <img
+              src={drDetantAsset.url}
+              alt="Dr Lucas Détant, spécialiste en orthodontie dento-faciale"
+              className="relative w-full max-w-md mx-auto rounded-3xl shadow-xl object-cover ring-1 ring-gold/30"
+            />
+          </div>
+          <div className="order-2 grid gap-5">
+            {[
+              { icon: GraduationCap, title: "Spécialiste qualifié", text: "Diplôme de spécialiste en Orthopédie Dento-Faciale (ODF). Ancien interne des Hôpitaux de Toulouse." },
+              { icon: Sparkles, title: "Traitements modernes", text: "Multi-attaches, traitements interceptifs, fonctionnels et mécaniques." },
+            ].map(({ icon: Icon, title, text }) => (
+              <div key={title} className="bg-card border border-border rounded-2xl p-8 hover:border-gold/50 transition group">
+                <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center text-primary group-hover:bg-gold/10 group-hover:text-gold transition">
+                  <Icon className="w-6 h-6" />
+                </div>
+                <h3 className="font-serif text-2xl mt-6 text-primary">{title}</h3>
+                <p className="mt-3 text-muted-foreground leading-relaxed">{text}</p>
               </div>
-              <h3 className="font-serif text-2xl mt-6 text-primary">{title}</h3>
-              <p className="mt-3 text-muted-foreground leading-relaxed">{text}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
