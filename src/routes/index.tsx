@@ -5,6 +5,7 @@ import afficheAsset from "@/assets/affiche-orthodontie.png.asset.json";
 import cabinet1 from "@/assets/cabinet-1.jpg";
 import cabinet2 from "@/assets/cabinet-2.jpg";
 import cabinet3 from "@/assets/cabinet-3.jpg";
+import drDetantAsset from "@/assets/dr-detant.webp.asset.json";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
