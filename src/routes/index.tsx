@@ -92,9 +92,9 @@ function HomePage() {
           </div>
           <div className="flex items-center justify-center">
             <img
-              src={logoAsset.url}
+              src={logoCutoutAsset.url}
               alt="Logo Cabinet Dandelion"
-              className="mx-auto w-full max-w-sm"
+              className="mx-auto w-full max-w-md drop-shadow-lg"
             />
           </div>
         </div>
