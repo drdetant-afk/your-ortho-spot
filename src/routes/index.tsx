@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Calendar, MapPin, Phone, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
 import logoAsset from "@/assets/logo.jpg.asset.json";
+import logoCutoutAsset from "@/assets/logo-cutout.png.asset.json";
 import afficheAsset from "@/assets/affiche-orthodontie.png.asset.json";
 import cabinet1 from "@/assets/cabinet-1.jpg";
 import cabinet2 from "@/assets/cabinet-2.jpg";
