@@ -205,6 +205,34 @@ function HomePage() {
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
+
+            <div className="md:order-4">
+              <h3 className="font-serif text-3xl text-primary">Inconfort & petites blessures</h3>
+              <ul className="mt-6 space-y-4 text-muted-foreground">
+                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Douleur après la pose</strong> — paracétamol si besoin, alimentation molle et tiède pendant 3 à 5 jours.</span></li>
+                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Joues ou lèvres irritées</strong> — appliquez de la cire orthodontique sur les brackets qui frottent.</span></li>
+                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Fil qui pique</strong> — repoussez-le délicatement avec un coton-tige propre.</span></li>
+                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Bague décollée ou cassée</strong> — conservez-la et prenez rendez-vous rapidement.</span></li>
+                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Hygiène quotidienne</strong> — brossage après chaque repas + brossette interdentaire chaque soir.</span></li>
+              </ul>
+              <a
+                href={conseilsInconfortAsset.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-8 text-primary font-medium hover:text-gold transition"
+              >
+                Télécharger la fiche
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+            <a
+              href={conseilsInconfortAsset.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block rounded-2xl overflow-hidden border border-border hover:border-gold/60 transition shadow-sm hover:shadow-xl md:order-3"
+            >
+              <img src={conseilsInconfortAsset.url} alt="Conseils en cas d'inconfort ou de blessure" loading="lazy" className="w-full h-auto" />
+            </a>
           </div>
         </div>
       </section>
@@ -252,8 +280,8 @@ function HomePage() {
       <footer className="bg-primary text-primary-foreground/70 border-t border-gold/20 py-10 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
           <div className="flex items-center gap-3">
-            <img src={logoAsset.url} alt="" className="h-8 w-8 rounded-full" />
-            <span className="font-serif text-gold">Cabinet Dandelion</span>
+            <img src={logoCleanAsset.url} alt="" className="h-8 w-8 object-contain" />
+            <span className="font-serif text-gold">Dr Détant Lucas</span>
           </div>
           <p>© {new Date().getFullYear()} Dr Lucas Détant — Spécialiste en Orthodontie Dento-Faciale</p>
         </div>
