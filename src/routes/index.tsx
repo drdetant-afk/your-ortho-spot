@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Calendar, MapPin, Phone, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
-import logoAsset from "@/assets/logo.jpg.asset.json";
-import logoCutoutAsset from "@/assets/logo-cutout.png.asset.json";
+import logoCleanAsset from "@/assets/logo-clean.png.asset.json";
 import afficheAsset from "@/assets/affiche-orthodontie.png.asset.json";
+import conseilsInconfortAsset from "@/assets/conseils-inconfort.png.asset.json";
 import cabinet1 from "@/assets/cabinet-1.jpg";
 import cabinet2 from "@/assets/cabinet-2.jpg";
 import cabinet3 from "@/assets/cabinet-3.jpg";
@@ -31,9 +31,9 @@ function HomePage() {
       <header className="sticky top-0 z-40 backdrop-blur bg-primary/95 text-primary-foreground border-b border-gold/20">
         <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-3">
-            <img src={logoAsset.url} alt="Cabinet Dandelion" className="h-12 w-12 rounded-full object-cover ring-1 ring-gold/40" />
+            <img src={logoCleanAsset.url} alt="Dr Détant Lucas" className="h-12 w-12 object-contain" />
             <div className="leading-tight">
-              <div className="font-serif text-xl text-gold">Cabinet Dandelion</div>
+              <div className="font-serif text-xl text-gold">Dr Détant Lucas</div>
               <div className="text-[11px] tracking-[0.18em] uppercase text-primary-foreground/70">Orthodontie · Bussac-Forêt</div>
             </div>
           </a>
@@ -92,9 +92,9 @@ function HomePage() {
           </div>
           <div className="flex items-center justify-center">
             <img
-              src={logoCutoutAsset.url}
-              alt="Logo Cabinet Dandelion"
-              className="mx-auto w-full max-w-md drop-shadow-lg"
+              src={logoCleanAsset.url}
+              alt="Emblème Dr Détant Lucas"
+              className="mx-auto w-full max-w-md drop-shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
             />
           </div>
         </div>
