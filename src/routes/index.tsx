@@ -200,24 +200,10 @@ function HomePage() {
                 <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Bague décollée</strong> — prévenez le cabinet par téléphone ou par e-mail. En l'absence d'urgence, elle sera recollée lors du prochain rendez-vous.</span></li>
                 <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Hygiène quotidienne</strong> — brossage après chaque repas + brossette interdentaire chaque soir.</span></li>
               </ul>
-              <a
-                href={conseilsInconfortAsset.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-8 text-primary font-medium hover:text-gold transition"
-              >
-                Télécharger la fiche
-                <ArrowRight className="w-4 h-4" />
-              </a>
             </div>
-            <a
-              href={conseilsInconfortAsset.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block rounded-2xl overflow-hidden border border-border hover:border-gold/60 transition shadow-sm hover:shadow-xl md:order-3"
-            >
+            <div className="rounded-2xl overflow-hidden border border-border shadow-sm md:order-3">
               <img src={conseilsInconfortAsset.url} alt="Conseils en cas d'inconfort ou de blessure" loading="lazy" className="w-full h-auto" />
-            </a>
+            </div>
           </div>
         </div>
       </section>
