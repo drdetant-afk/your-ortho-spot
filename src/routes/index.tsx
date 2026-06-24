@@ -224,7 +224,7 @@ function HomePage() {
                 </a>
               </li>
               <li className="flex gap-4"><Phone className="w-5 h-5 text-gold mt-1 shrink-0" />
-                <span className="text-primary-foreground/70">Coordonnées disponibles sur Doctolib</span>
+                <a href="tel:+33546707287" className="hover:text-gold transition">05 46 70 72 87</a>
               </li>
             </ul>
             <a
