@@ -177,14 +177,9 @@ function HomePage() {
           </div>
 
           <div className="mt-14 grid md:grid-cols-2 gap-8 items-start">
-            <a
-              href={afficheAsset.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block rounded-2xl overflow-hidden border border-border hover:border-gold/60 transition shadow-sm hover:shadow-xl"
-            >
+            <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
               <img src={afficheAsset.url} alt="L'Orthodontie : Consultation et Traitement" loading="lazy" className="w-full h-auto" />
-            </a>
+            </div>
             <div>
               <h3 className="font-serif text-3xl text-primary">L'Orthodontie : Consultation et Traitement</h3>
               <ul className="mt-6 space-y-4 text-muted-foreground">
