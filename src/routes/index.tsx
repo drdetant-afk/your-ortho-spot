@@ -237,13 +237,18 @@ function HomePage() {
               Prendre rendez-vous
             </a>
           </div>
-          <div className="rounded-2xl overflow-hidden border border-gold/20 min-h-[320px]">
-            <iframe
-              title="Carte du cabinet"
-              src="https://www.google.com/maps?q=26+Place+du+Champ+de+Foire,+17210+Bussac-For%C3%AAt&output=embed"
-              className="w-full h-full min-h-[320px]"
-              loading="lazy"
-            />
+          <div className="space-y-5">
+            <div className="rounded-2xl overflow-hidden border border-gold/20">
+              <img src={exterieurAsset.url} alt="Extérieur du cabinet du Dr Détant à Bussac-Forêt" loading="lazy" className="w-full h-56 object-cover" />
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-gold/20 min-h-[280px]">
+              <iframe
+                title="Carte du cabinet"
+                src="https://www.google.com/maps?q=26+Place+du+Champ+de+Foire,+17210+Bussac-For%C3%AAt&output=embed"
+                className="w-full h-full min-h-[280px]"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </section>
