@@ -2,11 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Calendar, MapPin, Phone, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
 import logoAsset from "@/assets/logo-gold.png.asset.json";
 import afficheAsset from "@/assets/affiche-orthodontie.png.asset.json";
-import conseilsInconfortAsset from "@/assets/conseils-inconfort-v2.png.asset.json";
+import conseilsInconfortAsset from "@/assets/conseils-inconfort-v3.png.asset.json";
 import cabinet1 from "@/assets/cabinet-warm-1.jpg.asset.json";
 import cabinet2 from "@/assets/cabinet-warm-2.jpg.asset.json";
 import cabinet3 from "@/assets/cabinet-warm-3.jpg.asset.json";
 import drDetantAsset from "@/assets/dr-detant-warm.jpg.asset.json";
+import exterieurAsset from "@/assets/exterieur-cabinet.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -176,14 +177,9 @@ function HomePage() {
           </div>
 
           <div className="mt-14 grid md:grid-cols-2 gap-8 items-start">
-            <a
-              href={afficheAsset.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block rounded-2xl overflow-hidden border border-border hover:border-gold/60 transition shadow-sm hover:shadow-xl"
-            >
+            <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
               <img src={afficheAsset.url} alt="L'Orthodontie : Consultation et Traitement" loading="lazy" className="w-full h-auto" />
-            </a>
+            </div>
             <div>
               <h3 className="font-serif text-3xl text-primary">L'Orthodontie : Consultation et Traitement</h3>
               <ul className="mt-6 space-y-4 text-muted-foreground">
@@ -193,15 +189,6 @@ function HomePage() {
                 <li className="flex gap-3"><span className="text-gold mt-1">●</span><span>Les traitements doivent débuter <strong className="text-foreground">avant 16 ans</strong> pour une prise en charge par la Sécurité sociale.</span></li>
                 <li className="flex gap-3"><span className="text-gold mt-1">●</span><span>Il n'est <strong className="text-foreground">pas nécessaire d'être adressé</strong> pour consulter un orthodontiste.</span></li>
               </ul>
-              <a
-                href={afficheAsset.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-8 text-primary font-medium hover:text-gold transition"
-              >
-                Télécharger la fiche
-                <ArrowRight className="w-4 h-4" />
-              </a>
             </div>
 
             <div className="md:order-4">
@@ -213,24 +200,10 @@ function HomePage() {
                 <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Bague décollée</strong> — prévenez le cabinet par téléphone ou par e-mail. En l'absence d'urgence, elle sera recollée lors du prochain rendez-vous.</span></li>
                 <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Hygiène quotidienne</strong> — brossage après chaque repas + brossette interdentaire chaque soir.</span></li>
               </ul>
-              <a
-                href={conseilsInconfortAsset.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-8 text-primary font-medium hover:text-gold transition"
-              >
-                Télécharger la fiche
-                <ArrowRight className="w-4 h-4" />
-              </a>
             </div>
-            <a
-              href={conseilsInconfortAsset.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block rounded-2xl overflow-hidden border border-border hover:border-gold/60 transition shadow-sm hover:shadow-xl md:order-3"
-            >
+            <div className="rounded-2xl overflow-hidden border border-border shadow-sm md:order-3">
               <img src={conseilsInconfortAsset.url} alt="Conseils en cas d'inconfort ou de blessure" loading="lazy" className="w-full h-auto" />
-            </a>
+            </div>
           </div>
         </div>
       </section>
@@ -251,7 +224,7 @@ function HomePage() {
                 </a>
               </li>
               <li className="flex gap-4"><Phone className="w-5 h-5 text-gold mt-1 shrink-0" />
-                <span className="text-primary-foreground/70">Coordonnées disponibles sur Doctolib</span>
+                <a href="tel:+33546707287" className="hover:text-gold transition">05 46 70 72 87</a>
               </li>
             </ul>
             <a
@@ -264,13 +237,18 @@ function HomePage() {
               Prendre rendez-vous
             </a>
           </div>
-          <div className="rounded-2xl overflow-hidden border border-gold/20 min-h-[320px]">
-            <iframe
-              title="Carte du cabinet"
-              src="https://www.google.com/maps?q=26+Place+du+Champ+de+Foire,+17210+Bussac-For%C3%AAt&output=embed"
-              className="w-full h-full min-h-[320px]"
-              loading="lazy"
-            />
+          <div className="space-y-5">
+            <div className="rounded-2xl overflow-hidden border border-gold/20">
+              <img src={exterieurAsset.url} alt="Extérieur du cabinet du Dr Détant à Bussac-Forêt" loading="lazy" className="w-full h-56 object-cover" />
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-gold/20 min-h-[280px]">
+              <iframe
+                title="Carte du cabinet"
+                src="https://www.google.com/maps?q=26+Place+du+Champ+de+Foire,+17210+Bussac-For%C3%AAt&output=embed"
+                className="w-full h-full min-h-[280px]"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </section>
