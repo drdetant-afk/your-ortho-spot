@@ -194,15 +194,6 @@ function HomePage() {
                 <li className="flex gap-3"><span className="text-gold mt-1">●</span><span>Les traitements doivent débuter <strong className="text-foreground">avant 16 ans</strong> pour une prise en charge par la Sécurité sociale.</span></li>
                 <li className="flex gap-3"><span className="text-gold mt-1">●</span><span>Il n'est <strong className="text-foreground">pas nécessaire d'être adressé</strong> pour consulter un orthodontiste.</span></li>
               </ul>
-              <a
-                href={afficheAsset.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-8 text-primary font-medium hover:text-gold transition"
-              >
-                Télécharger la fiche
-                <ArrowRight className="w-4 h-4" />
-              </a>
             </div>
 
             <div className="md:order-4">
