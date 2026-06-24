@@ -177,14 +177,9 @@ function HomePage() {
           </div>
 
           <div className="mt-14 grid md:grid-cols-2 gap-8 items-start">
-            <a
-              href={afficheAsset.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block rounded-2xl overflow-hidden border border-border hover:border-gold/60 transition shadow-sm hover:shadow-xl"
-            >
+            <div className="block rounded-2xl overflow-hidden border border-border shadow-sm">
               <img src={afficheAsset.url} alt="L'Orthodontie : Consultation et Traitement" loading="lazy" className="w-full h-auto" />
-            </a>
+            </div>
             <div>
               <h3 className="font-serif text-3xl text-primary">L'Orthodontie : Consultation et Traitement</h3>
               <ul className="mt-6 space-y-4 text-muted-foreground">
@@ -194,47 +189,15 @@ function HomePage() {
                 <li className="flex gap-3"><span className="text-gold mt-1">●</span><span>Les traitements doivent débuter <strong className="text-foreground">avant 16 ans</strong> pour une prise en charge par la Sécurité sociale.</span></li>
                 <li className="flex gap-3"><span className="text-gold mt-1">●</span><span>Il n'est <strong className="text-foreground">pas nécessaire d'être adressé</strong> pour consulter un orthodontiste.</span></li>
               </ul>
-              <a
-                href={afficheAsset.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-8 text-primary font-medium hover:text-gold transition"
-              >
-                Télécharger la fiche
-                <ArrowRight className="w-4 h-4" />
-              </a>
             </div>
+          </div>
 
-            <div className="md:order-4">
-              <h3 className="font-serif text-3xl text-primary">Inconfort & petites blessures</h3>
-              <ul className="mt-6 space-y-4 text-muted-foreground">
-                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Douleur après la pose</strong> — paracétamol si besoin, alimentation molle et tiède pendant 3 à 5 jours.</span></li>
-                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Joues ou lèvres irritées</strong> — appliquez de la cire orthodontique sur les brackets qui frottent.</span></li>
-                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Fil qui blesse</strong> — prévenez le cabinet et venez en consultation. Si l'inconfort persiste malgré la cire et que c'est une urgence en dehors des heures d'ouverture, vous pouvez couper la partie qui dépasse avec un coupe-ongles ou une petite pince.</span></li>
-                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Bague décollée</strong> — prévenez le cabinet par téléphone ou par e-mail. En l'absence d'urgence, elle sera recollée lors du prochain rendez-vous.</span></li>
-                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Hygiène quotidienne</strong> — brossage après chaque repas + brossette interdentaire chaque soir.</span></li>
-              </ul>
-              <a
-                href={conseilsInconfortAsset.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-8 text-primary font-medium hover:text-gold transition"
-              >
-                Télécharger la fiche
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-            <a
-              href={conseilsInconfortAsset.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block rounded-2xl overflow-hidden border border-border hover:border-gold/60 transition shadow-sm hover:shadow-xl md:order-3"
-            >
-              <img src={conseilsInconfortAsset.url} alt="Conseils en cas d'inconfort ou de blessure" loading="lazy" className="w-full h-auto" />
-            </a>
+          <div className="mt-12 rounded-2xl overflow-hidden border border-border shadow-sm">
+            <img src={conseilsInconfortAsset.url} alt="Conseils en cas d'inconfort ou de blessure" loading="lazy" className="w-full h-auto" />
           </div>
         </div>
       </section>
+
 
       <section id="contact" className="py-24 px-6 bg-primary text-primary-foreground">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
