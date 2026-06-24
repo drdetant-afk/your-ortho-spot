@@ -1,13 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Calendar, MapPin, Phone, Mail, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
-import logoAsset from "@/assets/logo-gold.png.asset.json";
+import { Calendar, MapPin, Phone, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
+import logoAsset from "@/assets/logo.jpg.asset.json";
+import logoCutoutAsset from "@/assets/logo-cutout.png.asset.json";
 import afficheAsset from "@/assets/affiche-orthodontie.png.asset.json";
-import conseilsInconfortAsset from "@/assets/conseils-inconfort-v3.png.asset.json";
-import exterieurAsset from "@/assets/exterieur-cabinet.jpg.asset.json";
-import cabinet1 from "@/assets/cabinet-warm-1.jpg.asset.json";
-import cabinet2 from "@/assets/cabinet-warm-2.jpg.asset.json";
-import cabinet3 from "@/assets/cabinet-warm-3.jpg.asset.json";
-import drDetantAsset from "@/assets/dr-detant-warm.jpg.asset.json";
+import cabinet1 from "@/assets/cabinet-1.jpg";
+import cabinet2 from "@/assets/cabinet-2.jpg";
+import cabinet3 from "@/assets/cabinet-3.jpg";
+import drDetantAsset from "@/assets/dr-detant.webp.asset.json";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -32,9 +31,9 @@ function HomePage() {
       <header className="sticky top-0 z-40 backdrop-blur bg-primary/95 text-primary-foreground border-b border-gold/20">
         <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-3">
-            <img src={logoAsset.url} alt="Dr Détant Lucas" className="h-12 w-12 object-contain" />
+            <img src={logoAsset.url} alt="Cabinet Dandelion" className="h-12 w-12 rounded-full object-cover ring-1 ring-gold/40" />
             <div className="leading-tight">
-              <div className="font-serif text-xl text-gold">Dr Détant Lucas</div>
+              <div className="font-serif text-xl text-gold">Cabinet Dandelion</div>
               <div className="text-[11px] tracking-[0.18em] uppercase text-primary-foreground/70">Orthodontie · Bussac-Forêt</div>
             </div>
           </a>
@@ -69,7 +68,7 @@ function HomePage() {
             </h1>
             <p className="mt-8 text-lg text-primary-foreground/80 max-w-lg font-light">
               Dr <strong className="font-medium">Lucas Détant</strong> vous accueille
-              à Bussac-Forêt. Un suivi orthodontique attentif,
+              au Cabinet Dandelion à Bussac-Forêt. Un suivi orthodontique attentif,
               pour enfants, adolescents et adultes.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
@@ -93,9 +92,9 @@ function HomePage() {
           </div>
           <div className="flex items-center justify-center">
             <img
-              src={logoAsset.url}
-              alt="Emblème Dr Détant Lucas"
-              className="mx-auto w-full max-w-md drop-shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
+              src={logoCutoutAsset.url}
+              alt="Logo Cabinet Dandelion"
+              className="mx-auto w-full max-w-md drop-shadow-lg"
             />
           </div>
         </div>
@@ -151,12 +150,14 @@ function HomePage() {
             <GoldDivider />
           </div>
           <div className="mt-12 grid md:grid-cols-3 gap-5">
-            {[cabinet1, cabinet2, cabinet3].map((asset, i) => (
+            {[cabinet1, cabinet2, cabinet3].map((src, i) => (
               <div key={i} className="overflow-hidden rounded-2xl group">
                 <img
-                  src={asset.url}
-                  alt={`Cabinet du Dr Détant ${i + 1}`}
+                  src={src}
+                  alt={`Cabinet Dandelion ${i + 1}`}
                   loading="lazy"
+                  width={1536}
+                  height={1024}
                   className="w-full h-72 object-cover group-hover:scale-105 transition duration-700"
                 />
               </div>
@@ -177,9 +178,14 @@ function HomePage() {
           </div>
 
           <div className="mt-14 grid md:grid-cols-2 gap-8 items-start">
-            <div className="block rounded-2xl overflow-hidden border border-border shadow-sm">
+            <a
+              href={afficheAsset.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block rounded-2xl overflow-hidden border border-border hover:border-gold/60 transition shadow-sm hover:shadow-xl"
+            >
               <img src={afficheAsset.url} alt="L'Orthodontie : Consultation et Traitement" loading="lazy" className="w-full h-auto" />
-            </div>
+            </a>
             <div>
               <h3 className="font-serif text-3xl text-primary">L'Orthodontie : Consultation et Traitement</h3>
               <ul className="mt-6 space-y-4 text-muted-foreground">
@@ -189,78 +195,65 @@ function HomePage() {
                 <li className="flex gap-3"><span className="text-gold mt-1">●</span><span>Les traitements doivent débuter <strong className="text-foreground">avant 16 ans</strong> pour une prise en charge par la Sécurité sociale.</span></li>
                 <li className="flex gap-3"><span className="text-gold mt-1">●</span><span>Il n'est <strong className="text-foreground">pas nécessaire d'être adressé</strong> pour consulter un orthodontiste.</span></li>
               </ul>
+              <a
+                href={afficheAsset.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-8 text-primary font-medium hover:text-gold transition"
+              >
+                Télécharger la fiche
+                <ArrowRight className="w-4 h-4" />
+              </a>
             </div>
-          </div>
-
-          <div className="mt-12 rounded-2xl overflow-hidden border border-border shadow-sm">
-            <img src={conseilsInconfortAsset.url} alt="Conseils en cas d'inconfort ou de blessure" loading="lazy" className="w-full h-auto" />
           </div>
         </div>
       </section>
 
-
       <section id="contact" className="py-24 px-6 bg-primary text-primary-foreground">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
+          <div>
             <p className="text-gold tracking-[0.25em] uppercase text-xs">Contact</p>
             <h2 className="font-serif text-4xl md:text-5xl mt-4">Nous rendre visite</h2>
             <GoldDivider />
+            <ul className="space-y-5 mt-8 text-primary-foreground/85">
+              <li className="flex gap-4"><MapPin className="w-5 h-5 text-gold mt-1 shrink-0" />
+                <span>26 Place du Champ de Foire<br />17210 Bussac-Forêt</span>
+              </li>
+              <li className="flex gap-4"><Calendar className="w-5 h-5 text-gold mt-1 shrink-0" />
+                <a href={DOCTOLIB_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition underline-offset-4 hover:underline">
+                  Prise de rendez-vous en ligne sur Doctolib
+                </a>
+              </li>
+              <li className="flex gap-4"><Phone className="w-5 h-5 text-gold mt-1 shrink-0" />
+                <span className="text-primary-foreground/70">Coordonnées disponibles sur Doctolib</span>
+              </li>
+            </ul>
+            <a
+              href={DOCTOLIB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-primary font-medium hover:bg-gold-soft transition mt-10"
+            >
+              <Calendar className="w-5 h-5" />
+              Prendre rendez-vous
+            </a>
           </div>
-
-          <div className="mt-12 grid md:grid-cols-3 gap-8 items-stretch">
-            <div className="flex flex-col">
-              <ul className="space-y-5 text-primary-foreground/85">
-                <li className="flex gap-4"><MapPin className="w-5 h-5 text-gold mt-1 shrink-0" />
-                  <span>26 Place du Champ de Foire<br />17210 Bussac-Forêt</span>
-                </li>
-                <li className="flex gap-4"><Phone className="w-5 h-5 text-gold mt-1 shrink-0" />
-                  <a href="tel:+33546707287" className="hover:text-gold transition">05 46 70 72 87</a>
-                </li>
-                <li className="flex gap-4"><Mail className="w-5 h-5 text-gold mt-1 shrink-0" />
-                  <a href="mailto:secretariat@dentairebussacforet.fr" className="hover:text-gold transition break-all">secretariat@dentairebussacforet.fr</a>
-                </li>
-                <li className="flex gap-4"><Calendar className="w-5 h-5 text-gold mt-1 shrink-0" />
-                  <a href={DOCTOLIB_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition underline-offset-4 hover:underline">
-                    Prise de rendez-vous sur Doctolib
-                  </a>
-                </li>
-              </ul>
-              <a
-                href={DOCTOLIB_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-primary font-medium hover:bg-gold-soft transition mt-8 w-fit"
-              >
-                <Calendar className="w-5 h-5" />
-                Prendre rendez-vous
-              </a>
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-gold/20 min-h-[280px]">
-              <iframe
-                title="Carte du cabinet"
-                src="https://www.google.com/maps?q=26+Place+du+Champ+de+Foire,+17210+Bussac-For%C3%AAt&output=embed"
-                className="w-full h-full min-h-[280px]"
-                loading="lazy"
-              />
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-gold/20 min-h-[280px]">
-              <img
-                src={exterieurAsset.url}
-                alt="Extérieur du cabinet du Dr Détant à Bussac-Forêt"
-                loading="lazy"
-                className="w-full h-full object-cover min-h-[280px]"
-              />
-            </div>
+          <div className="rounded-2xl overflow-hidden border border-gold/20 min-h-[320px]">
+            <iframe
+              title="Carte du cabinet"
+              src="https://www.google.com/maps?q=26+Place+du+Champ+de+Foire,+17210+Bussac-For%C3%AAt&output=embed"
+              className="w-full h-full min-h-[320px]"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
-
 
       <footer className="bg-primary text-primary-foreground/70 border-t border-gold/20 py-10 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
           <div className="flex items-center gap-3">
-            <img src={logoAsset.url} alt="" className="h-8 w-8 object-contain" />
-            <span className="font-serif text-gold">Dr Détant Lucas</span>
+            <img src={logoAsset.url} alt="" className="h-8 w-8 rounded-full" />
+            <span className="font-serif text-gold">Cabinet Dandelion</span>
           </div>
           <p>© {new Date().getFullYear()} Dr Lucas Détant — Spécialiste en Orthodontie Dento-Faciale</p>
         </div>
