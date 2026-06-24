@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Calendar, MapPin, Phone, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
+import { Calendar, MapPin, Phone, Mail, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
 import logoAsset from "@/assets/logo-gold.png.asset.json";
 import afficheAsset from "@/assets/affiche-orthodontie.png.asset.json";
 import conseilsInconfortAsset from "@/assets/conseils-inconfort-v3.png.asset.json";
@@ -200,44 +200,61 @@ function HomePage() {
 
 
       <section id="contact" className="py-24 px-6 bg-primary text-primary-foreground">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
-          <div>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center">
             <p className="text-gold tracking-[0.25em] uppercase text-xs">Contact</p>
             <h2 className="font-serif text-4xl md:text-5xl mt-4">Nous rendre visite</h2>
             <GoldDivider />
-            <ul className="space-y-5 mt-8 text-primary-foreground/85">
-              <li className="flex gap-4"><MapPin className="w-5 h-5 text-gold mt-1 shrink-0" />
-                <span>26 Place du Champ de Foire<br />17210 Bussac-Forêt</span>
-              </li>
-              <li className="flex gap-4"><Calendar className="w-5 h-5 text-gold mt-1 shrink-0" />
-                <a href={DOCTOLIB_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition underline-offset-4 hover:underline">
-                  Prise de rendez-vous en ligne sur Doctolib
-                </a>
-              </li>
-              <li className="flex gap-4"><Phone className="w-5 h-5 text-gold mt-1 shrink-0" />
-                <span className="text-primary-foreground/70">Coordonnées disponibles sur Doctolib</span>
-              </li>
-            </ul>
-            <a
-              href={DOCTOLIB_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-primary font-medium hover:bg-gold-soft transition mt-10"
-            >
-              <Calendar className="w-5 h-5" />
-              Prendre rendez-vous
-            </a>
           </div>
-          <div className="rounded-2xl overflow-hidden border border-gold/20 min-h-[320px]">
-            <iframe
-              title="Carte du cabinet"
-              src="https://www.google.com/maps?q=26+Place+du+Champ+de+Foire,+17210+Bussac-For%C3%AAt&output=embed"
-              className="w-full h-full min-h-[320px]"
-              loading="lazy"
-            />
+
+          <div className="mt-12 grid md:grid-cols-3 gap-8 items-stretch">
+            <div className="flex flex-col">
+              <ul className="space-y-5 text-primary-foreground/85">
+                <li className="flex gap-4"><MapPin className="w-5 h-5 text-gold mt-1 shrink-0" />
+                  <span>26 Place du Champ de Foire<br />17210 Bussac-Forêt</span>
+                </li>
+                <li className="flex gap-4"><Phone className="w-5 h-5 text-gold mt-1 shrink-0" />
+                  <a href="tel:+33546707287" className="hover:text-gold transition">05 46 70 72 87</a>
+                </li>
+                <li className="flex gap-4"><Mail className="w-5 h-5 text-gold mt-1 shrink-0" />
+                  <a href="mailto:secretariat@dentairebussacforet.fr" className="hover:text-gold transition break-all">secretariat@dentairebussacforet.fr</a>
+                </li>
+                <li className="flex gap-4"><Calendar className="w-5 h-5 text-gold mt-1 shrink-0" />
+                  <a href={DOCTOLIB_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition underline-offset-4 hover:underline">
+                    Prise de rendez-vous sur Doctolib
+                  </a>
+                </li>
+              </ul>
+              <a
+                href={DOCTOLIB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-primary font-medium hover:bg-gold-soft transition mt-8 w-fit"
+              >
+                <Calendar className="w-5 h-5" />
+                Prendre rendez-vous
+              </a>
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-gold/20 min-h-[280px]">
+              <iframe
+                title="Carte du cabinet"
+                src="https://www.google.com/maps?q=26+Place+du+Champ+de+Foire,+17210+Bussac-For%C3%AAt&output=embed"
+                className="w-full h-full min-h-[280px]"
+                loading="lazy"
+              />
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-gold/20 min-h-[280px]">
+              <img
+                src={exterieurAsset.url}
+                alt="Extérieur du cabinet du Dr Détant à Bussac-Forêt"
+                loading="lazy"
+                className="w-full h-full object-cover min-h-[280px]"
+              />
+            </div>
           </div>
         </div>
       </section>
+
 
       <footer className="bg-primary text-primary-foreground/70 border-t border-gold/20 py-10 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
