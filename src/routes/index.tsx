@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Calendar, MapPin, Phone, Mail, Car, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
 import logoAsset from "@/assets/logo-gold.png.asset.json";
 import afficheAsset from "@/assets/affiche-orthodontie.png.asset.json";
-import conseilsInconfortAsset from "@/assets/conseils-inconfort-v4.png.asset.json";
+import conseilsInconfortAsset from "@/assets/conseils-inconfort-v5.png.asset.json";
 import cabinet1 from "@/assets/cabinet-warm-1.jpg.asset.json";
 import cabinet2 from "@/assets/cabinet-warm-2.jpg.asset.json";
 import cabinet3 from "@/assets/cabinet-warm-3.jpg.asset.json";
