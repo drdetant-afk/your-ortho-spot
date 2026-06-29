@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Calendar, MapPin, Phone, Mail, Car, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
 import logoAsset from "@/assets/logo-gold.png.asset.json";
 import afficheAsset from "@/assets/affiche-orthodontie.png.asset.json";
-import conseilsInconfortAsset from "@/assets/conseils-inconfort-v5.png.asset.json";
+import conseilsInconfortAsset from "@/assets/conseils-inconfort-v3.png.asset.json";
 import cabinet1 from "@/assets/cabinet-warm-1.jpg.asset.json";
 import cabinet2 from "@/assets/cabinet-warm-2.jpg.asset.json";
 import cabinet3 from "@/assets/cabinet-warm-3.jpg.asset.json";
@@ -227,7 +227,7 @@ function HomePage() {
                 <a href="tel:+33546707287" className="hover:text-gold transition">05 46 70 72 87</a>
               </li>
               <li className="flex gap-4"><Mail className="w-5 h-5 text-gold mt-1 shrink-0" />
-                <a href="mailto:secretariat@dentairebussacforet.fr" className="hover:text-gold transition">secrétariat@dentairebussacforet.fr</a>
+                <a href="mailto:secretariat@dentairebussacforet.fr" className="hover:text-gold transition">secretariat@dentairebussacforet.fr</a>
               </li>
               <li className="flex gap-4"><Car className="w-5 h-5 text-gold mt-1 shrink-0" />
                 <span>Parking gratuit à proximité</span>
