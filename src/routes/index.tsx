@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Calendar, MapPin, Phone, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
+import { Calendar, MapPin, Phone, Mail, Car, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
 import logoAsset from "@/assets/logo-gold.png.asset.json";
 import afficheAsset from "@/assets/affiche-orthodontie.png.asset.json";
-import conseilsInconfortAsset from "@/assets/conseils-inconfort-v3.png.asset.json";
+import conseilsInconfortAsset from "@/assets/conseils-inconfort-v5.png.asset.json";
 import cabinet1 from "@/assets/cabinet-warm-1.jpg.asset.json";
 import cabinet2 from "@/assets/cabinet-warm-2.jpg.asset.json";
 import cabinet3 from "@/assets/cabinet-warm-3.jpg.asset.json";
@@ -198,7 +198,7 @@ function HomePage() {
                 <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Joues ou lèvres irritées</strong> — appliquez de la cire orthodontique sur les brackets qui frottent.</span></li>
                 <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Fil qui blesse</strong> — prévenez le cabinet et venez en consultation. Si l'inconfort persiste malgré la cire et que c'est une urgence en dehors des heures d'ouverture, vous pouvez couper la partie qui dépasse avec un coupe-ongles ou une petite pince.</span></li>
                 <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Bague décollée</strong> — prévenez le cabinet par téléphone ou par e-mail. En l'absence d'urgence, elle sera recollée lors du prochain rendez-vous.</span></li>
-                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Hygiène quotidienne</strong> — brossage après chaque repas + brossette interdentaire chaque soir.</span></li>
+                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Hygiène quotidienne & de l'appareil</strong> — brossage après chaque repas + brossette interdentaire chaque soir.</span></li>
               </ul>
             </div>
             <div className="rounded-2xl overflow-hidden border border-border shadow-sm md:order-3">
@@ -225,6 +225,12 @@ function HomePage() {
               </li>
               <li className="flex gap-4"><Phone className="w-5 h-5 text-gold mt-1 shrink-0" />
                 <a href="tel:+33546707287" className="hover:text-gold transition">05 46 70 72 87</a>
+              </li>
+              <li className="flex gap-4"><Mail className="w-5 h-5 text-gold mt-1 shrink-0" />
+                <a href="mailto:secretariat@dentairebussacforet.fr" className="hover:text-gold transition">secrétariat@dentairebussacforet.fr</a>
+              </li>
+              <li className="flex gap-4"><Car className="w-5 h-5 text-gold mt-1 shrink-0" />
+                <span>Parking gratuit à proximité</span>
               </li>
             </ul>
             <a
@@ -262,6 +268,18 @@ function HomePage() {
           <p>© {new Date().getFullYear()} Dr Lucas Détant — Spécialiste en Orthodontie Dento-Faciale</p>
         </div>
       </footer>
+
+      <a
+        href="#top"
+        aria-label="Retour en haut"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary border border-gold/30 shadow-2xl flex items-center justify-center overflow-hidden hover:bg-primary/90 transition"
+      >
+        <img
+          src={logoAsset.url}
+          alt="Dr Détant Lucas"
+          className="h-10 w-10 object-contain"
+        />
+      </a>
     </div>
   );
 }
