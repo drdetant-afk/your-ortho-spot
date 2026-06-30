@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Calendar, MapPin, Phone, Mail, Car, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
 import logoUrl from "@/assets/logo-gold.png";
-import afficheUrl from "@/assets/affiche-orthodontie.png";
 import conseilsInconfortUrl from "@/assets/conseils-inconfort-v4.png";
 import cabinet1 from "@/assets/cabinet-warm-1.png";
 import cabinet2 from "@/assets/cabinet-warm-2.png";
@@ -177,9 +176,6 @@ function HomePage() {
           </div>
 
           <div className="mt-14 grid md:grid-cols-2 gap-8 items-start">
-            <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
-              <img src={afficheUrl} alt="L'Orthodontie : Consultation et Traitement" loading="lazy" className="w-full h-auto" />
-            </div>
             <div>
               <h3 className="font-serif text-3xl text-primary">L'Orthodontie : Consultation et Traitement</h3>
               <ul className="mt-6 space-y-4 text-muted-foreground">
@@ -191,17 +187,7 @@ function HomePage() {
               </ul>
             </div>
 
-            <div className="md:order-4">
-              <h3 className="font-serif text-3xl text-primary">Inconfort & petites blessures</h3>
-              <ul className="mt-6 space-y-4 text-muted-foreground">
-                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Douleur après la pose</strong> — paracétamol si besoin, alimentation molle et tiède pendant 3 à 5 jours.</span></li>
-                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Joues ou lèvres irritées</strong> — appliquez de la cire orthodontique sur les brackets qui frottent.</span></li>
-                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Fil qui blesse</strong> — prévenez le cabinet et venez en consultation. Si l'inconfort persiste malgré la cire et que c'est une urgence en dehors des heures d'ouverture, vous pouvez couper la partie qui dépasse avec un coupe-ongles ou une petite pince.</span></li>
-                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Bague décollée</strong> — prévenez le cabinet par téléphone ou par e-mail. En l'absence d'urgence, elle sera recollée lors du prochain rendez-vous.</span></li>
-                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Hygiène quotidienne & de l'appareil</strong> — brossage après chaque repas + brossette interdentaire chaque soir.</span></li>
-              </ul>
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-border shadow-sm md:order-3">
+            <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
               <img src={conseilsInconfortUrl} alt="Conseils en cas d'inconfort ou de blessure" loading="lazy" className="w-full h-auto" />
             </div>
           </div>
