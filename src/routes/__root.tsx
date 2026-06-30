@@ -78,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Cabinet Dandelion — Dr Lucas Détant, Orthodontiste à Bussac-Forêt" },
-      { name: "description", content: "Spécialiste qualifié en Orthodontie Dento-Faciale. Dr Lucas Détant vous accueille au Cabinet Dandelion à Bussac-Forêt (17210). Rendez-vous en ligne." },
+      { name: "description", content: "Spécialiste qualifié en Orthodontie, Orthopédie Dento-Faciale. Dr Lucas Détant vous accueille au Cabinet Dandelion à Bussac-Forêt (17210). Rendez-vous en ligne." },
       { property: "og:title", content: "Cabinet Dandelion — Dr Lucas Détant" },
       { property: "og:description", content: "Spécialiste en Orthodontie Dento-Faciale à Bussac-Forêt." },
       { property: "og:type", content: "website" },
