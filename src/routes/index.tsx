@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Calendar, MapPin, Phone, Mail, Car, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
-import logoAsset from "@/assets/logo-gold.png.asset.json";
-import afficheAsset from "@/assets/affiche-orthodontie.png.asset.json";
-import conseilsInconfortAsset from "@/assets/conseils-inconfort-v4.png.asset.json";
-import cabinet1 from "@/assets/cabinet-warm-1.jpg.asset.json";
-import cabinet2 from "@/assets/cabinet-warm-2.jpg.asset.json";
-import cabinet3 from "@/assets/cabinet-warm-3.jpg.asset.json";
-import drDetantAsset from "@/assets/dr-detant-warm.jpg.asset.json";
-import exterieurAsset from "@/assets/exterieur-cabinet.png.asset.json";
+import logoUrl from "@/assets/logo-gold.png";
+import afficheUrl from "@/assets/affiche-orthodontie.png";
+import conseilsInconfortUrl from "@/assets/conseils-inconfort-v4.png";
+import cabinet1 from "@/assets/cabinet-warm-1.png";
+import cabinet2 from "@/assets/cabinet-warm-2.png";
+import cabinet3 from "@/assets/cabinet-warm-3.png";
+import drDetantUrl from "@/assets/dr-detant-warm.png";
+import exterieurUrl from "@/assets/exterieur-cabinet.png";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -32,7 +32,7 @@ function HomePage() {
       <header className="sticky top-0 z-40 backdrop-blur bg-primary/95 text-primary-foreground border-b border-gold/20">
         <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-3">
-            <img src={logoAsset.url} alt="Dr Détant Lucas" className="h-12 w-12 object-contain" />
+            <img src={logoUrl} alt="Dr Détant Lucas" className="h-12 w-12 object-contain" />
             <div className="leading-tight">
               <div className="font-serif text-xl text-gold">Dr Détant Lucas</div>
               <div className="text-[11px] tracking-[0.18em] uppercase text-primary-foreground/70">Orthodontie · Bussac-Forêt</div>
@@ -93,7 +93,7 @@ function HomePage() {
           </div>
           <div className="flex items-center justify-center">
             <img
-              src={logoAsset.url}
+              src={logoUrl}
               alt="Emblème Dr Détant Lucas"
               className="mx-auto w-full max-w-md drop-shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
             />
@@ -119,7 +119,7 @@ function HomePage() {
           <div className="relative order-1">
             <div className="absolute -inset-3 rounded-3xl bg-gold/10 blur-2xl" />
             <img
-              src={drDetantAsset.url}
+              src={drDetantUrl}
               alt="Dr Lucas Détant, spécialiste en orthodontie dento-faciale"
               className="relative w-full max-w-md mx-auto rounded-3xl shadow-xl object-cover ring-1 ring-gold/30"
             />
@@ -154,7 +154,7 @@ function HomePage() {
             {[cabinet1, cabinet2, cabinet3].map((asset, i) => (
               <div key={i} className="overflow-hidden rounded-2xl group">
                 <img
-                  src={asset.url}
+                  src={asset}
                   alt={`Cabinet du Dr Détant ${i + 1}`}
                   loading="lazy"
                   className="w-full h-72 object-cover group-hover:scale-105 transition duration-700"
@@ -178,7 +178,7 @@ function HomePage() {
 
           <div className="mt-14 grid md:grid-cols-2 gap-8 items-start">
             <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
-              <img src={afficheAsset.url} alt="L'Orthodontie : Consultation et Traitement" loading="lazy" className="w-full h-auto" />
+              <img src={afficheUrl} alt="L'Orthodontie : Consultation et Traitement" loading="lazy" className="w-full h-auto" />
             </div>
             <div>
               <h3 className="font-serif text-3xl text-primary">L'Orthodontie : Consultation et Traitement</h3>
@@ -202,7 +202,7 @@ function HomePage() {
               </ul>
             </div>
             <div className="rounded-2xl overflow-hidden border border-border shadow-sm md:order-3">
-              <img src={conseilsInconfortAsset.url} alt="Conseils en cas d'inconfort ou de blessure" loading="lazy" className="w-full h-auto" />
+              <img src={conseilsInconfortUrl} alt="Conseils en cas d'inconfort ou de blessure" loading="lazy" className="w-full h-auto" />
             </div>
           </div>
         </div>
@@ -245,7 +245,7 @@ function HomePage() {
           </div>
           <div className="space-y-5">
             <div className="rounded-2xl overflow-hidden border border-gold/20">
-              <img src={exterieurAsset.url} alt="Extérieur du cabinet du Dr Détant à Bussac-Forêt" loading="lazy" className="w-full h-56 object-cover" />
+              <img src={exterieurUrl} alt="Extérieur du cabinet du Dr Détant à Bussac-Forêt" loading="lazy" className="w-full h-56 object-cover" />
             </div>
             <div className="rounded-2xl overflow-hidden border border-gold/20 min-h-[280px]">
               <iframe
@@ -262,7 +262,7 @@ function HomePage() {
       <footer className="bg-primary text-primary-foreground/70 border-t border-gold/20 py-10 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
           <div className="flex items-center gap-3">
-            <img src={logoAsset.url} alt="" className="h-8 w-8 object-contain" />
+            <img src={logoUrl} alt="" className="h-8 w-8 object-contain" />
             <span className="font-serif text-gold">Dr Détant Lucas</span>
           </div>
           <p>© {new Date().getFullYear()} Dr Lucas Détant — Spécialiste en Orthodontie Dento-Faciale</p>
@@ -275,7 +275,7 @@ function HomePage() {
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary border border-gold/30 shadow-2xl flex items-center justify-center overflow-hidden hover:bg-primary/90 transition"
       >
         <img
-          src={logoAsset.url}
+          src={logoUrl}
           alt="Dr Détant Lucas"
           className="h-10 w-10 object-contain"
         />
