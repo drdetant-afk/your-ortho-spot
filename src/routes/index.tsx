@@ -1,7 +1,9 @@
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { createFileRoute } from "@tanstack/react-router";
 import { Calendar, MapPin, Phone, Mail, Car, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
 import logoUrl from "@/assets/logo-gold.png";
 import conseilsInconfortUrl from "@/assets/conseils-inconfort-v4.png";
+import afficheUrl from "@/assets/affiche-orthodontie.png";
 import cabinet1 from "@/assets/cabinet-warm-1.png";
 import cabinet2 from "@/assets/cabinet-warm-2.png";
 import cabinet3 from "@/assets/cabinet-warm-3.png";
@@ -175,21 +177,23 @@ function HomePage() {
             </p>
           </div>
 
-          <div className="mt-14 grid md:grid-cols-2 gap-8 items-start">
-            <div>
-              <h3 className="font-serif text-3xl text-primary">L'Orthodontie : Consultation et Traitement</h3>
-              <ul className="mt-6 space-y-4 text-muted-foreground">
-                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Début du traitement</strong> de 6 à 12 ans environ — l'âge idéal pour dépister et commencer.</span></li>
-                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Traitement interceptif (précoce)</strong> — agit sur la croissance osseuse pour éviter des problèmes majeurs.</span></li>
-                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span><strong className="text-foreground">Traitement correctif (adolescent)</strong> — aligne les dents permanentes une fois la croissance stable.</span></li>
-                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span>Les traitements doivent débuter <strong className="text-foreground">avant 16 ans</strong> pour une prise en charge par la Sécurité sociale.</span></li>
-                <li className="flex gap-3"><span className="text-gold mt-1">●</span><span>Il n'est <strong className="text-foreground">pas nécessaire d'être adressé</strong> pour consulter un orthodontiste.</span></li>
-              </ul>
-            </div>
-
-            <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
-              <img src={conseilsInconfortUrl} alt="Conseils en cas d'inconfort ou de blessure" loading="lazy" className="w-full h-auto" />
-            </div>
+          <div className="mt-14 max-w-2xl mx-auto">
+            <Tabs defaultValue="demarrer" className="w-full">
+              <TabsList className="grid w-full grid-cols-2 mb-6">
+                <TabsTrigger value="demarrer">Quand démarrer</TabsTrigger>
+                <TabsTrigger value="urgence">Urgence</TabsTrigger>
+              </TabsList>
+              <TabsContent value="demarrer">
+                <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
+                  <img src={afficheUrl} alt="L'Orthodontie : Consultation et Traitement" loading="lazy" className="w-full h-auto" />
+                </div>
+              </TabsContent>
+              <TabsContent value="urgence">
+                <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
+                  <img src={conseilsInconfortUrl} alt="Conseils en cas d'inconfort ou de blessure" loading="lazy" className="w-full h-auto" />
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
         </div>
       </section>
