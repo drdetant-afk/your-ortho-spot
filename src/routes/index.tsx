@@ -66,7 +66,7 @@ function HomePage() {
             <p className="text-gold tracking-[0.25em] uppercase text-xs mb-6">Spécialiste qualifié</p>
             <h1 className="font-serif text-5xl md:text-6xl leading-[1.05]">
               Orthodontie<br />
-              <span className="text-gold italic">Dento-Faciale</span>
+              <span className="text-gold italic">Orthopédie Dento-Faciale</span>
             </h1>
             <p className="mt-8 text-lg text-primary-foreground/80 max-w-lg font-light">
               Dr <strong className="font-medium">Lucas Détant</strong> vous accueille
@@ -255,7 +255,7 @@ function HomePage() {
             <img src={logoUrl} alt="" className="h-8 w-8 object-contain" />
             <span className="font-serif text-gold">Dr Détant Lucas</span>
           </div>
-          <p>© {new Date().getFullYear()} Dr Lucas Détant — Spécialiste en Orthodontie Dento-Faciale</p>
+          <p>© {new Date().getFullYear()} Dr Lucas Détant — Spécialiste en Orthopédie Dento-Faciale</p>
         </div>
       </footer>
 
