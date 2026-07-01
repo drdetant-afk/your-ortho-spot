@@ -1,40 +1,21 @@
-import js from "@eslint/js";
-import eslintPluginPrettier from "eslint-plugin-prettier/recommended";
-import globals from "globals";
-import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
-import tseslint from "typescript-eslint";
+# Routes
 
-export default tseslint.config(
-  { ignores: ["dist", ".output", ".vinxi"] },
-  {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ["**/*.{ts,tsx}"],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
-    },
-    plugins: {
-      "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
-    },
-    rules: {
-      ...reactHooks.configs.recommended.rules,
-      "no-restricted-imports": [
-        "error",
-        {
-          paths: [
-            {
-              name: "server-only",
-              message:
-                "TanStack Start does not use the Next.js `server-only` package. Rename the module to `*.server.ts` or mark it with `@tanstack/react-start/server-only`.",
-            },
-          ],
-        },
-      ],
-      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
-      "@typescript-eslint/no-unused-vars": "off",
-    },
-  },
-  eslintPluginPrettier,
-);
+TanStack Start uses **file-based routing**. Every `.tsx` file in this directory
+is a route. Do **not** create `src/pages/`, `src/routes/_app/index.tsx`, or
+`app/layout.tsx` — those are Next.js / Remix conventions. The only root layout
+is `src/routes/__root.tsx`.
+
+## Conventions
+
+| File | URL |
+| --- | --- |
+| `index.tsx` | `/` |
+| `about.tsx` | `/about` |
+| `users/index.tsx` | `/users` |
+| `users/$id.tsx` | `/users/:id` (dynamic — bare `$`, no curly braces) |
+| `posts/{-$category}.tsx` | `/posts/:category?` (optional segment) |
+| `files/$.tsx` | `/files/*` (splat — read via `_splat` param, never `*`) |
+| `_layout.tsx` | layout route (renders children via `<Outlet />`) |
+| `__root.tsx` | app shell — wraps every page; preserve `<Outlet />` |
+
+`routeTree.gen.ts` is auto-generated. Don't edit it by hand.
