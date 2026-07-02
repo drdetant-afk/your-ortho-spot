@@ -50,14 +50,18 @@ function OrthodontiePage() {
 
       <header className="sticky top-0 z-40 backdrop-blur bg-primary/95 text-primary-foreground border-b border-gold/20">
         <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-          <a href="#top" className="flex items-center gap-3">
-            <img src={logoUrl} alt="Dr Détant Lucas" className="h-12 w-12 object-contain" />
+          <Link to="/" className="flex items-center gap-3" title="Retour à l'accueil du Cabinet Dandelion">
+            <img src={logoUrl} alt="Cabinet Dandelion" className="h-12 w-12 object-contain" />
             <div className="leading-tight">
               <div className="font-serif text-xl text-gold">Dr Détant Lucas</div>
               <div className="text-[11px] tracking-[0.18em] uppercase text-primary-foreground/70">Orthodontie · Bussac-Forêt</div>
             </div>
-          </a>
+          </Link>
           <nav className="hidden md:flex items-center gap-8 text-sm">
+            <Link to="/" className="inline-flex items-center gap-1.5 hover:text-gold transition">
+              <ArrowLeft className="w-3.5 h-3.5" />
+              Accueil
+            </Link>
             <a href="#cabinet" className="hover:text-gold transition">Le cabinet</a>
             <a href="#specialite" className="hover:text-gold transition">Spécialité</a>
             <a href="#conseils" className="hover:text-gold transition">Fiches conseils</a>

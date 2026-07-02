@@ -177,7 +177,7 @@ function CabinetHomePage() {
           <div className="text-center">
             <p className="text-gold tracking-[0.25em] uppercase text-xs">L'équipe</p>
             <h2 className="font-serif text-4xl md:text-5xl mt-4 text-primary">
-              Deux praticiens, un même cabinet
+              Deux expertises complémentaires
             </h2>
             <GoldDivider />
             <p className="text-muted-foreground max-w-xl mx-auto">
@@ -216,7 +216,7 @@ function CabinetHomePage() {
               <img
                 src={drJustineYeUrl}
                 alt="Dr Justine Ye"
-                className="w-40 h-40 rounded-full object-cover object-top ring-2 ring-gold/40"
+                className="w-40 h-40 rounded-full object-cover ring-2 ring-gold/40"
               />
               <h3 className="font-serif text-2xl mt-6 text-primary">
                 Dr Justine Ye
@@ -226,7 +226,7 @@ function CabinetHomePage() {
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
                 Soins conservateurs, prévention, parodontie et esthétique dentaire,
-                pour toute la famille, dans une approche douce et à l'écoute de chacun.
+                pour toute la famille, dans une approche à l'écoute de chacun.
               </p>
             </div>
           </div>
