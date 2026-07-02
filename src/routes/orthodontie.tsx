@@ -4,9 +4,6 @@ import { Calendar, MapPin, Phone, Mail, Car, GraduationCap, Sparkles, ArrowRight
 import logoUrl from "@/assets/logo-gold.png";
 import conseilsInconfortUrl from "@/assets/conseils-inconfort-v4.png";
 import afficheUrl from "@/assets/affiche-orthodontie.png";
-import cabinet1 from "@/assets/cabinet-warm-1.png";
-import cabinet2 from "@/assets/cabinet-warm-2.png";
-import cabinet3 from "@/assets/cabinet-warm-3.png";
 import drDetantUrl from "@/assets/dr-detant-warm.png";
 import exterieurUrl from "@/assets/exterieur-cabinet.png";
 
@@ -62,7 +59,6 @@ function OrthodontiePage() {
               <ArrowLeft className="w-3.5 h-3.5" />
               Accueil
             </Link>
-            <a href="#cabinet" className="hover:text-gold transition">Le cabinet</a>
             <a href="#specialite" className="hover:text-gold transition">Spécialité</a>
             <a href="#conseils" className="hover:text-gold transition">Fiches conseils</a>
             <a href="#contact" className="hover:text-gold transition">Contact</a>
@@ -106,10 +102,10 @@ function OrthodontiePage() {
                 Prendre rendez-vous
               </a>
               <a
-                href="#cabinet"
+                href="#specialite"
                 className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-7 py-3.5 hover:bg-gold/10 transition"
               >
-                Découvrir le cabinet
+                Notre approche
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
@@ -164,31 +160,7 @@ function OrthodontiePage() {
         </div>
       </section>
 
-      <section id="cabinet" className="py-24 px-6 bg-secondary/40 border-y border-border">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center">
-            <p className="text-gold tracking-[0.25em] uppercase text-xs">Le cabinet</p>
-            <h2 className="font-serif text-4xl md:text-5xl mt-4 text-primary">
-              Un lieu calme & lumineux
-            </h2>
-            <GoldDivider />
-          </div>
-          <div className="mt-12 grid md:grid-cols-3 gap-5">
-            {[cabinet1, cabinet2, cabinet3].map((asset, i) => (
-              <div key={i} className="overflow-hidden rounded-2xl group">
-                <img
-                  src={asset}
-                  alt={`Cabinet du Dr Détant ${i + 1}`}
-                  loading="lazy"
-                  className="w-full h-72 object-cover group-hover:scale-105 transition duration-700"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="conseils" className="py-24 px-6">
+      <section id="conseils" className="py-24 px-6 bg-secondary/40 border-y border-border">
         <div className="max-w-6xl mx-auto">
           <div className="text-center">
             <p className="text-gold tracking-[0.25em] uppercase text-xs">À découvrir</p>
