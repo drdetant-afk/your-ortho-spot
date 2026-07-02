@@ -6,7 +6,6 @@ import {
   Mail,
   Car,
   ArrowRight,
-  Flower2,
   Stethoscope,
   ShieldCheck,
   Smile,
@@ -19,7 +18,8 @@ import cabinet3 from "@/assets/cabinet-warm-3.png";
 import drDetantUrl from "@/assets/dr-detant-warm.png";
 import exterieurUrl from "@/assets/exterieur-cabinet.png";
 import afficheUrl from "@/assets/affiche-orthodontie.png";
-import compagneAvatarUrl from "@/assets/placeholder-avatar-compagne.png";
+import drJustineYeUrl from "@/assets/dr-justine-ye.jpg";
+import equipeUrl from "@/assets/equipe-cabinet.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -48,23 +48,13 @@ function GoldDivider() {
   );
 }
 
-function DandelionMark({ className = "h-12 w-12" }: { className?: string }) {
-  return (
-    <div
-      className={`${className} rounded-full bg-gold/15 border border-gold/40 flex items-center justify-center text-gold shrink-0`}
-    >
-      <Flower2 className="w-[55%] h-[55%]" strokeWidth={1.6} />
-    </div>
-  );
-}
-
 function CabinetHomePage() {
   return (
     <div className="min-h-screen">
       <header className="sticky top-0 z-40 backdrop-blur bg-primary/95 text-primary-foreground border-b border-gold/20">
         <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-3">
-            <DandelionMark />
+            <img src={logoUrl} alt="Cabinet Dandelion" className="h-12 w-12 object-contain" />
             <div className="leading-tight">
               <div className="font-serif text-xl text-gold">Cabinet Dandelion</div>
               <div className="text-[11px] tracking-[0.18em] uppercase text-primary-foreground/70">
@@ -221,27 +211,37 @@ function CabinetHomePage() {
               </Link>
             </div>
 
-            {/* Compagne — Chirurgien-dentiste généraliste (photo & prénom à compléter) */}
+            {/* Dr Justine Ye — Chirurgien-dentiste généraliste */}
             <div className="bg-card border border-border rounded-3xl p-8 flex flex-col items-center text-center hover:border-gold/50 transition">
               <img
-                src={compagneAvatarUrl}
-                alt="Photo à venir"
-                className="w-40 h-40 rounded-full object-cover ring-2 ring-gold/40"
+                src={drJustineYeUrl}
+                alt="Dr Justine Ye"
+                className="w-40 h-40 rounded-full object-cover object-top ring-2 ring-gold/40"
               />
               <h3 className="font-serif text-2xl mt-6 text-primary">
-                Dr [Prénom] Détant
+                Dr Justine Ye
               </h3>
               <p className="text-gold text-sm tracking-wide uppercase mt-1">
                 Chirurgien-dentiste généraliste
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                Soins conservateurs, prévention, esthétique dentaire et urgences,
+                Soins conservateurs, prévention, parodontie et esthétique dentaire,
                 pour toute la famille, dans une approche douce et à l'écoute de chacun.
               </p>
-              <span className="mt-6 inline-flex items-center gap-2 rounded-full border border-dashed border-muted-foreground/40 px-5 py-2.5 text-muted-foreground text-xs">
-                Photo &amp; présentation à compléter
-              </span>
             </div>
+          </div>
+
+          <div className="mt-14 relative">
+            <div className="absolute -inset-3 rounded-3xl bg-gold/10 blur-2xl" />
+            <img
+              src={equipeUrl}
+              alt="L'équipe du Cabinet Dandelion à l'accueil"
+              loading="lazy"
+              className="relative w-full max-w-4xl mx-auto rounded-3xl shadow-xl object-cover ring-1 ring-gold/30"
+            />
+            <p className="relative text-center text-sm text-muted-foreground mt-5">
+              Toute l'équipe du Cabinet Dandelion vous accueille à Bussac-Forêt.
+            </p>
           </div>
         </div>
       </section>
@@ -260,7 +260,7 @@ function CabinetHomePage() {
               { icon: Stethoscope, title: "Dentisterie générale", text: "Soins conservateurs, détartrage, prévention et suivi régulier." },
               { icon: Sparkles, title: "Orthodontie", text: "Traitements pour enfants, adolescents et adultes, avec le Dr Détant." },
               { icon: Smile, title: "Esthétique dentaire", text: "Des solutions pour retrouver confiance dans votre sourire." },
-              { icon: ShieldCheck, title: "Urgences", text: "Une prise en charge rapide en cas de douleur ou de traumatisme." },
+              { icon: ShieldCheck, title: "Parodontie", text: "Prévention et traitement des maladies de gencives et des tissus de soutien des dents." },
             ].map(({ icon: Icon, title, text }) => (
               <div key={title} className="bg-card border border-border rounded-2xl p-6 hover:border-gold/50 transition group">
                 <div className="w-11 h-11 rounded-full bg-primary/5 flex items-center justify-center text-primary group-hover:bg-gold/10 group-hover:text-gold transition">
@@ -384,7 +384,7 @@ function CabinetHomePage() {
       <footer className="bg-primary text-primary-foreground/70 border-t border-gold/20 py-10 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
           <div className="flex items-center gap-3">
-            <DandelionMark className="h-8 w-8" />
+            <img src={logoUrl} alt="" className="h-8 w-8 object-contain" />
             <span className="font-serif text-gold">Cabinet Dandelion</span>
           </div>
           <nav className="flex items-center gap-6">
