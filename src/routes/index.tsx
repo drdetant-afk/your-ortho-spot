@@ -225,8 +225,7 @@ function CabinetHomePage() {
                 Chirurgien-dentiste généraliste
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                Soins conservateurs, prévention, parodontie et esthétique dentaire,
-                pour toute la famille, dans une approche à l'écoute de chacun.
+                Soins conservateurs, prévention, parodontie et esthétique dentaire.
               </p>
             </div>
           </div>
