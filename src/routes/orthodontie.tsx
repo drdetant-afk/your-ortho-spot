@@ -56,13 +56,13 @@ function OrthodontiePage() {
             </div>
           </Link>
           <nav className="hidden md:flex items-center gap-8 text-sm">
-            <Link to="/" className="inline-flex items-center gap-1.5 hover:text-gold transition">
+            <Link to="/" className="nav-link inline-flex items-center gap-1.5 hover:text-gold transition">
               <ArrowLeft className="w-3.5 h-3.5" />
               Accueil
             </Link>
-            <a href="#specialite" className="hover:text-gold transition">Spécialité</a>
-            <a href="#conseils" className="hover:text-gold transition">Fiches conseils</a>
-            <a href="#contact" className="hover:text-gold transition">Contact</a>
+            <a href="#specialite" className="nav-link hover:text-gold transition">Spécialité</a>
+            <a href="#conseils" className="nav-link hover:text-gold transition">Fiches conseils</a>
+            <a href="#contact" className="nav-link hover:text-gold transition">Contact</a>
           </nav>
           <a
             href={DOCTOLIB_URL}
@@ -261,12 +261,12 @@ function OrthodontiePage() {
       <a
         href="#top"
         aria-label="Retour en haut"
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary border border-gold/30 shadow-2xl flex items-center justify-center overflow-hidden hover:bg-primary/90 transition"
+        className="group fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary border border-gold/30 shadow-2xl flex items-center justify-center overflow-hidden hover:bg-primary/90 transition"
       >
         <img
           src={logoUrl}
           alt="Dr Détant Lucas"
-          className="h-10 w-10 object-contain"
+          className="h-10 w-10 object-contain transition-transform duration-700 ease-out group-hover:rotate-[360deg]"
         />
       </a>
     </div>

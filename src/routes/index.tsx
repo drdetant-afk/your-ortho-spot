@@ -64,10 +64,10 @@ function CabinetHomePage() {
             </div>
           </a>
           <nav className="hidden md:flex items-center gap-8 text-sm">
-            <a href="#cabinet" className="hover:text-gold transition">Le cabinet</a>
-            <a href="#equipe" className="hover:text-gold transition">L'équipe</a>
-            <Link to="/orthodontie" className="hover:text-gold transition">Orthodontie</Link>
-            <a href="#contact" className="hover:text-gold transition">Contact</a>
+            <a href="#cabinet" className="nav-link hover:text-gold transition">Le cabinet</a>
+            <a href="#equipe" className="nav-link hover:text-gold transition">L'équipe</a>
+            <Link to="/orthodontie" className="nav-link hover:text-gold transition">Orthodontie</Link>
+            <a href="#contact" className="nav-link hover:text-gold transition">Contact</a>
           </nav>
           <a
             href={PHONE_TEL}
@@ -118,7 +118,7 @@ function CabinetHomePage() {
               </Link>
             </div>
           </div>
-          <div className="relative">
+          <div className="parallax-slow relative">
             <div className="absolute -inset-3 rounded-3xl bg-gold/10 blur-2xl" />
             <img
               src={exterieurUrl}
@@ -399,9 +399,9 @@ function CabinetHomePage() {
       <a
         href="#top"
         aria-label="Retour en haut"
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary border border-gold/30 shadow-2xl flex items-center justify-center overflow-hidden hover:bg-primary/90 transition"
+        className="group fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary border border-gold/30 shadow-2xl flex items-center justify-center overflow-hidden hover:bg-primary/90 transition"
       >
-        <img src={logoUrl} alt="Cabinet Dandelion" className="h-10 w-10 object-contain" />
+        <img src={logoUrl} alt="Cabinet Dandelion" className="h-10 w-10 object-contain transition-transform duration-700 ease-out group-hover:rotate-[360deg]" />
       </a>
     </div>
   );
