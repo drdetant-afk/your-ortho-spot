@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { DandelionSeeds } from "@/components/DandelionSeeds";
 import {
   Calendar,
   MapPin,
@@ -86,6 +87,7 @@ function CabinetHomePage() {
               "radial-gradient(circle at 80% 30%, oklch(0.74 0.13 78 / 0.35), transparent 50%)",
           }}
         />
+        <DandelionSeeds className="absolute inset-0 h-full w-full" />
         <div className="relative max-w-6xl mx-auto px-6 py-24 md:py-32 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-gold tracking-[0.25em] uppercase text-xs mb-6">
