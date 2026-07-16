@@ -8,15 +8,45 @@ import afficheUrl from "@/assets/affiche-orthodontie.png";
 import drDetantUrl from "@/assets/dr-detant-warm.png";
 import exterieurUrl from "@/assets/exterieur-cabinet.png";
 
+const SITE_URL = "https://www.dentairebussacforet.fr";
+
 export const Route = createFileRoute("/orthodontie")({
   head: () => ({
     meta: [
       { title: "Orthodontie — Dr Lucas Détant | Cabinet Dandelion, Bussac-Forêt" },
       { name: "description", content: "Spécialiste qualifié en Orthodontie, Orthopédie Dento-Faciale. Dr Lucas Détant vous accueille au Cabinet Dandelion à Bussac-Forêt (17210). Rendez-vous en ligne." },
+      { property: "og:url", content: `${SITE_URL}/orthodontie` },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/orthodontie` }],
   }),
   component: OrthodontiePage,
 });
+
+// Données structurées "orthodontiste" pour le référencement local
+const ORTHO_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  name: "Dr Lucas Détant",
+  url: `${SITE_URL}/orthodontie`,
+  image: `${SITE_URL}/images/dr-detant-warm.png`,
+  telephone: "+33546707287",
+  medicalSpecialty: "Orthodontie — Orthopédie Dento-Faciale",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "26 Place du Champ de Foire",
+    postalCode: "17210",
+    addressLocality: "Bussac-Forêt",
+    addressCountry: "FR",
+  },
+  parentOrganization: {
+    "@type": "Dentist",
+    name: "Cabinet Dentaire Dandelion",
+    url: `${SITE_URL}/`,
+  },
+  sameAs: [
+    "https://www.doctolib.fr/orthodontiste/bussac-foret/lucas-detant-bussac-foret",
+  ],
+};
 
 const DOCTOLIB_URL =
   "https://www.doctolib.fr/orthodontiste/bussac-foret/lucas-detant-bussac-foret";
@@ -34,6 +64,10 @@ function GoldDivider() {
 function OrthodontiePage() {
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ORTHO_JSONLD) }}
+      />
       <div className="bg-secondary/60 border-b border-border">
         <div className="max-w-6xl mx-auto px-6 h-9 flex items-center">
           <Link

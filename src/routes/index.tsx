@@ -22,15 +22,54 @@ import afficheUrl from "@/assets/affiche-orthodontie.png";
 import drJustineYeUrl from "@/assets/dr-justine-ye.jpg";
 import equipeUrl from "@/assets/equipe-cabinet.webp";
 
+const SITE_URL = "https://www.dentairebussacforet.fr";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Cabinet Dandelion — Chirurgiens-dentistes à Bussac-Forêt" },
+      { title: "Cabinet Dandelion — Dentiste & Orthodontiste à Bussac-Forêt" },
       { name: "description", content: "Cabinet dentaire Dandelion à Bussac-Forêt (17210) : dentisterie générale et orthodontie. Une équipe à votre écoute pour toute la famille." },
+      { property: "og:url", content: `${SITE_URL}/` },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
   }),
   component: CabinetHomePage,
 });
+
+// Données structurées "cabinet dentaire" pour le référencement local
+const CABINET_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  name: "Cabinet Dentaire Dandelion",
+  url: `${SITE_URL}/`,
+  image: `${SITE_URL}/images/exterieur-cabinet.png`,
+  logo: `${SITE_URL}/images/logo-gold.png`,
+  telephone: "+33546707287",
+  email: "secretariat@dentairebussacforet.fr",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "26 Place du Champ de Foire",
+    postalCode: "17210",
+    addressLocality: "Bussac-Forêt",
+    addressCountry: "FR",
+  },
+  employee: [
+    {
+      "@type": "Person",
+      name: "Dr Lucas Détant",
+      jobTitle: "Orthodontiste — Spécialiste en Orthopédie Dento-Faciale",
+    },
+    {
+      "@type": "Person",
+      name: "Dr Justine Ye",
+      jobTitle: "Chirurgien-dentiste généraliste",
+    },
+  ],
+  sameAs: [
+    "https://www.doctolib.fr/orthodontiste/bussac-foret/lucas-detant-bussac-foret",
+    "https://www.pagesjaunes.fr/pros/64559455",
+  ],
+};
 
 // Numéro du secrétariat, partagé par les deux praticiens du cabinet.
 const PHONE_DISPLAY = "05 46 70 72 87";
@@ -52,6 +91,10 @@ function GoldDivider() {
 function CabinetHomePage() {
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(CABINET_JSONLD) }}
+      />
       <header className="sticky top-0 z-40 backdrop-blur bg-primary/95 text-primary-foreground border-b border-gold/20">
         <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-3">

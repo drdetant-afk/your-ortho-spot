@@ -72,20 +72,29 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const SITE_URL = "https://www.dentairebussacforet.fr";
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Cabinet Dandelion — Dr Lucas Détant, Orthodontiste à Bussac-Forêt" },
-      { name: "description", content: "Spécialiste qualifié en Orthodontie, Orthopédie Dento-Faciale. Dr Lucas Détant vous accueille au Cabinet Dandelion à Bussac-Forêt (17210). Rendez-vous en ligne." },
-      { property: "og:title", content: "Cabinet Dandelion — Dr Lucas Détant" },
-      { property: "og:description", content: "Spécialiste en Orthodontie Dento-Faciale à Bussac-Forêt." },
+      { title: "Cabinet Dandelion — Chirurgiens-dentistes à Bussac-Forêt" },
+      { name: "description", content: "Cabinet dentaire Dandelion à Bussac-Forêt (17210) : dentisterie générale avec le Dr Justine Ye et orthodontie avec le Dr Lucas Détant. Rendez-vous en ligne." },
+      { property: "og:title", content: "Cabinet Dandelion — Chirurgiens-dentistes à Bussac-Forêt" },
+      { property: "og:description", content: "Dentisterie générale et orthodontie à Bussac-Forêt (17210), pour toute la famille." },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "fr_FR" },
+      { property: "og:site_name", content: "Cabinet Dandelion" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:image", content: `${SITE_URL}/images/exterieur-cabinet.png` },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: `${SITE_URL}/images/exterieur-cabinet.png` },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/images/logo-gold.png", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/images/logo-gold.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" },
@@ -99,7 +108,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <HeadContent />
       </head>
