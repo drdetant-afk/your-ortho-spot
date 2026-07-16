@@ -160,7 +160,7 @@ function CabinetHomePage() {
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto mt-16 grid md:grid-cols-3 gap-5">
+        <div className="reveal max-w-6xl mx-auto mt-16 grid md:grid-cols-3 gap-5">
           {[cabinet1, cabinet2, cabinet3].map((asset, i) => (
             <div key={i} className="overflow-hidden rounded-2xl group">
               <img
@@ -188,9 +188,9 @@ function CabinetHomePage() {
             </p>
           </div>
 
-          <div className="mt-14 grid md:grid-cols-2 gap-8">
+          <div className="reveal mt-14 grid md:grid-cols-2 gap-8">
             {/* Dr Lucas Détant — Orthodontiste */}
-            <div className="bg-card border border-border rounded-3xl p-8 flex flex-col items-center text-center hover:border-gold/50 transition">
+            <div className="bg-card border border-border rounded-3xl p-8 flex flex-col items-center text-center hover:border-gold/50 hover:-translate-y-1 hover:shadow-lg transition duration-300">
               <img
                 src={drDetantUrl}
                 alt="Dr Lucas Détant"
@@ -214,7 +214,7 @@ function CabinetHomePage() {
             </div>
 
             {/* Dr Justine Ye — Chirurgien-dentiste généraliste */}
-            <div className="bg-card border border-border rounded-3xl p-8 flex flex-col items-center text-center hover:border-gold/50 transition">
+            <div className="bg-card border border-border rounded-3xl p-8 flex flex-col items-center text-center hover:border-gold/50 hover:-translate-y-1 hover:shadow-lg transition duration-300">
               <img
                 src={drJustineYeUrl}
                 alt="Dr Justine Ye"
@@ -232,7 +232,7 @@ function CabinetHomePage() {
             </div>
           </div>
 
-          <div className="mt-14 relative">
+          <div className="reveal mt-14 relative">
             <div className="absolute -inset-3 rounded-3xl bg-gold/10 blur-2xl" />
             <img
               src={equipeUrl}
@@ -256,14 +256,14 @@ function CabinetHomePage() {
             </h2>
             <GoldDivider />
           </div>
-          <div className="mt-14 grid md:grid-cols-4 gap-5">
+          <div className="reveal mt-14 grid md:grid-cols-4 gap-5">
             {[
               { icon: Stethoscope, title: "Dentisterie générale", text: "Soins conservateurs, détartrage, prévention et suivi régulier." },
               { icon: Sparkles, title: "Orthodontie", text: "Traitements pour enfants, adolescents et adultes, avec le Dr Détant." },
               { icon: Smile, title: "Esthétique dentaire", text: "Des solutions pour retrouver confiance dans votre sourire." },
               { icon: ShieldCheck, title: "Parodontie", text: "Prévention et traitement des maladies de gencives et des tissus de soutien des dents." },
             ].map(({ icon: Icon, title, text }) => (
-              <div key={title} className="bg-card border border-border rounded-2xl p-6 hover:border-gold/50 transition group">
+              <div key={title} className="bg-card border border-border rounded-2xl p-6 hover:border-gold/50 hover:-translate-y-1 hover:shadow-lg transition duration-300 group">
                 <div className="w-11 h-11 rounded-full bg-primary/5 flex items-center justify-center text-primary group-hover:bg-gold/10 group-hover:text-gold transition">
                   <Icon className="w-5 h-5" />
                 </div>
@@ -276,7 +276,7 @@ function CabinetHomePage() {
       </section>
 
       <section className="py-24 px-6 bg-secondary/40 border-y border-border">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div className="reveal max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div className="relative order-2 md:order-1">
             <div className="absolute -inset-3 rounded-3xl bg-gold/10 blur-2xl" />
             <img

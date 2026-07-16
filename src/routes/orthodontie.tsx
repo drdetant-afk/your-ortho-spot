@@ -136,7 +136,7 @@ function OrthodontiePage() {
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto mt-16 grid md:grid-cols-2 gap-10 items-center">
+        <div className="reveal max-w-6xl mx-auto mt-16 grid md:grid-cols-2 gap-10 items-center">
           <div className="relative order-1">
             <div className="absolute -inset-3 rounded-3xl bg-gold/10 blur-2xl" />
             <img
@@ -150,7 +150,7 @@ function OrthodontiePage() {
               { icon: GraduationCap, title: "Spécialiste qualifié", text: "Diplôme de spécialiste en Orthopédie Dento-Faciale (ODF). Ancien interne des Hôpitaux de Toulouse." },
               { icon: Sparkles, title: "Traitements modernes", text: "Multi-attaches, traitements interceptifs, fonctionnels et mécaniques." },
             ].map(({ icon: Icon, title, text }) => (
-              <div key={title} className="bg-card border border-border rounded-2xl p-8 hover:border-gold/50 transition group">
+              <div key={title} className="bg-card border border-border rounded-2xl p-8 hover:border-gold/50 hover:-translate-y-1 hover:shadow-lg transition duration-300 group">
                 <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center text-primary group-hover:bg-gold/10 group-hover:text-gold transition">
                   <Icon className="w-6 h-6" />
                 </div>
@@ -173,18 +173,18 @@ function OrthodontiePage() {
             </p>
           </div>
 
-          <div className="mt-14 max-w-2xl mx-auto">
+          <div className="reveal mt-14 max-w-2xl mx-auto">
             <Tabs defaultValue="demarrer" className="w-full">
               <TabsList className="grid w-full grid-cols-2 mb-6">
                 <TabsTrigger value="demarrer">Quand démarrer</TabsTrigger>
                 <TabsTrigger value="urgence">Urgence</TabsTrigger>
               </TabsList>
-              <TabsContent value="demarrer">
+              <TabsContent value="demarrer" className="data-[state=active]:animate-in data-[state=active]:fade-in data-[state=active]:slide-in-from-bottom-3 data-[state=active]:duration-500">
                 <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
                   <img src={afficheUrl} alt="L'Orthodontie : Consultation et Traitement" loading="lazy" className="w-full h-auto" />
                 </div>
               </TabsContent>
-              <TabsContent value="urgence">
+              <TabsContent value="urgence" className="data-[state=active]:animate-in data-[state=active]:fade-in data-[state=active]:slide-in-from-bottom-3 data-[state=active]:duration-500">
                 <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
                   <img src={conseilsInconfortUrl} alt="Conseils en cas d'inconfort ou de blessure" loading="lazy" className="w-full h-auto" />
                 </div>
