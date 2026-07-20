@@ -267,14 +267,26 @@ function OrthodontiePage() {
             <div className="rounded-2xl overflow-hidden border border-gold/20">
               <img src={exterieurUrl} alt="Extérieur du cabinet du Dr Détant à Bussac-Forêt" loading="lazy" className="w-full h-56 object-cover" />
             </div>
-            <div className="rounded-2xl overflow-hidden border border-gold/20 min-h-[280px]">
-              <iframe
-                title="Carte du cabinet"
-                src="https://www.google.com/maps?q=26+Place+du+Champ+de+Foire,+17210+Bussac-For%C3%AAt&output=embed"
-                className="w-full h-full min-h-[280px]"
-                loading="lazy"
-              />
-            </div>
+            {/* Lien vers Google Maps plutôt qu'une iframe : aucun cookie Google
+                n'est déposé tant que le visiteur ne clique pas (RGPD/CNIL) */}
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=26+Place+du+Champ+de+Foire%2C+17210+Bussac-For%C3%AAt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl border border-gold/20 min-h-[280px] flex flex-col items-center justify-center gap-4 text-center px-6 hover:border-gold/50 hover:bg-gold/5 transition group"
+            >
+              <MapPin className="w-10 h-10 text-gold" />
+              <div>
+                <p className="font-serif text-2xl text-gold">Nous trouver</p>
+                <p className="mt-2 text-primary-foreground/80 text-sm">
+                  26 Place du Champ de Foire<br />17210 Bussac-Forêt
+                </p>
+              </div>
+              <span className="inline-flex items-center gap-2 text-sm border border-gold/40 rounded-full px-5 py-2.5 group-hover:bg-gold/10 transition">
+                Ouvrir l'itinéraire dans Google Maps
+                <ArrowRight className="w-4 h-4" />
+              </span>
+            </a>
           </div>
         </div>
       </section>
@@ -285,9 +297,12 @@ function OrthodontiePage() {
             <img src={logoUrl} alt="" className="h-8 w-8 object-contain" />
             <span className="font-serif text-gold">Dr Détant Lucas</span>
           </div>
-          <Link to="/" className="hover:text-gold transition">
-            ← Retour au Cabinet Dandelion
-          </Link>
+          <nav className="flex items-center gap-6">
+            <Link to="/" className="hover:text-gold transition">
+              ← Retour au Cabinet Dandelion
+            </Link>
+            <Link to="/mentions-legales" className="hover:text-gold transition">Mentions légales</Link>
+          </nav>
           <p>© {new Date().getFullYear()} Dr Lucas Détant — Spécialiste en Orthopédie Dento-Faciale</p>
         </div>
       </footer>
