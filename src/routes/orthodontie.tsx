@@ -1,7 +1,6 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { DandelionSeeds } from "@/components/DandelionSeeds";
-import { Statement } from "@/components/Statement";
 import { Calendar, MapPin, Phone, Mail, Car, GraduationCap, Sparkles, ArrowRight, ArrowLeft } from "lucide-react";
 import logoUrl from "@/assets/logo-gold.png";
 import conseilsInconfortUrl from "@/assets/conseils-inconfort-v4.png";
@@ -196,25 +195,6 @@ function OrthodontiePage() {
           </div>
         </div>
       </section>
-
-      <Statement
-        eyebrow="À tout âge"
-        lines={[
-          <>Il n'est jamais</>,
-          <>trop tard pour <em>sourire</em>.</>,
-        ]}
-        footer={
-          <a
-            href={DOCTOLIB_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-primary font-medium hover:bg-gold-soft transition"
-          >
-            <Calendar className="w-5 h-5" />
-            Prendre rendez-vous
-          </a>
-        }
-      />
 
       <section id="conseils" className="py-24 px-6 bg-secondary/40 border-y border-border">
         <div className="max-w-6xl mx-auto">
