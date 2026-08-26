@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { DandelionSeeds } from "@/components/DandelionSeeds";
+import { Statement, KeyFigures } from "@/components/Statement";
 import {
   Calendar,
   MapPin,
@@ -189,6 +190,14 @@ function CabinetHomePage() {
         </div>
       </section>
 
+      <Statement
+        eyebrow="Notre engagement"
+        lines={[
+          <>Prendre soin de votre</>,
+          <><em>sourire</em>, simplement.</>,
+        ]}
+      />
+
       <section id="cabinet" className="py-24 px-6">
         <div className="max-w-5xl mx-auto text-center">
           <p className="text-gold tracking-[0.25em] uppercase text-xs">Le cabinet</p>
@@ -216,6 +225,15 @@ function CabinetHomePage() {
           ))}
         </div>
       </section>
+
+      <KeyFigures
+        figures={[
+          { value: "2", label: "praticiens, généraliste et orthodontiste" },
+          { value: "3", label: "salles de soins équipées" },
+          { value: "2025", label: "un cabinet ouvert et pensé pour votre confort" },
+          { value: "0 €", label: "parking gratuit à deux pas" },
+        ]}
+      />
 
       <section id="equipe" className="py-24 px-6 bg-secondary/40 border-y border-border">
         <div className="max-w-6xl mx-auto">
@@ -360,6 +378,35 @@ function CabinetHomePage() {
           </div>
         </div>
       </section>
+
+      <Statement
+        tone="light"
+        eyebrow="Votre rendez-vous"
+        lines={[
+          <>Un cabinet neuf,</>,
+          <>une équipe <em>proche</em>.</>,
+        ]}
+        footer={
+          <>
+            <a
+              href={PHONE_TEL}
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-primary-foreground font-medium hover:bg-primary/90 transition"
+            >
+              <Phone className="w-5 h-5" />
+              {PHONE_DISPLAY}
+            </a>
+            <a
+              href={DOCTOLIB_ORTHO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-primary/30 px-7 py-3.5 text-primary font-medium hover:bg-primary/5 transition"
+            >
+              <Calendar className="w-5 h-5" />
+              RDV orthodontie
+            </a>
+          </>
+        }
+      />
 
       <section id="contact" className="py-24 px-6 bg-primary text-primary-foreground">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
