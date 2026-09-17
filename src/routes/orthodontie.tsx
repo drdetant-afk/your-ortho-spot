@@ -17,17 +17,17 @@ import {
   btn,
 } from "@/components/site";
 import logoUrl from "@/assets/logo-gold.png";
-import drDetantUrl from "@/assets/dr-detant-warm.png";
-import exterieurUrl from "@/assets/exterieur-cabinet.png";
+import drDetantUrl from "@/assets/dr-detant.jpg";
+import facadeUrl from "@/assets/facade.jpg";
 
 export const Route = createFileRoute("/orthodontie")({
   head: () => ({
     meta: [
-      { title: "Orthodontie — Dr Lucas Détant | Cabinet Dandelion, Bussac-Forêt" },
+      { title: "Orthodontie — Dr Lucas Détant | Cabinet dentaire Dandelion, Bussac-Forêt" },
       {
         name: "description",
         content:
-          "Spécialiste qualifié en Orthodontie, Orthopédie Dento-Faciale. Dr Lucas Détant vous accueille au Cabinet Dandelion à Bussac-Forêt (17210). Rendez-vous en ligne.",
+          "Spécialiste qualifié en Orthodontie, Orthopédie Dento-Faciale. Dr Lucas Détant vous accueille au Cabinet dentaire Dandelion à Bussac-Forêt (17210). Rendez-vous en ligne.",
       },
       { property: "og:url", content: `${SITE_URL}/orthodontie` },
     ],
@@ -42,7 +42,7 @@ const ORTHO_JSONLD = {
   "@type": "Dentist",
   name: "Dr Lucas Détant",
   url: `${SITE_URL}/orthodontie`,
-  image: `${SITE_URL}/images/dr-detant-warm.png`,
+  image: `${SITE_URL}/images/dr-detant.jpg`,
   telephone: "+33546707287",
   medicalSpecialty: "Orthodontie — Orthopédie Dento-Faciale",
   address: {
@@ -100,7 +100,7 @@ function OrthodontiePage() {
             to="/"
             className="inline-flex items-center gap-2 py-2 text-sm text-lichen transition hover:text-gold"
           >
-            <ArrowLeft className="h-4 w-4" /> Cabinet Dandelion
+            <ArrowLeft className="h-4 w-4" /> Cabinet dentaire Dandelion
           </Link>
           <div className="mt-4 border border-gold/45 px-6 py-10 outline outline-1 outline-offset-[6px] outline-gold/20 sm:px-10 md:px-14 md:py-14">
             <div className="flex flex-wrap justify-between gap-x-6 gap-y-2 text-xs uppercase tracking-[0.24em] text-lichen">
@@ -298,8 +298,8 @@ function OrthodontiePage() {
           </div>
           <div className="md:col-span-5 md:col-start-8">
             <Tirage
-              src={exterieurUrl}
-              alt="Extérieur du cabinet du Dr Détant à Bussac-Forêt"
+              src={facadeUrl}
+              alt="Façade du cabinet du Dr Détant, place du Champ de Foire à Bussac-Forêt"
               legende="Place du Champ de Foire"
               numero="2"
               tilt={2}

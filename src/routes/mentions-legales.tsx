@@ -5,7 +5,7 @@ import { SITE_URL, SiteFooter, SiteHeader } from "@/components/site";
 export const Route = createFileRoute("/mentions-legales")({
   head: () => ({
     meta: [
-      { title: "Mentions légales | Cabinet Dandelion, Bussac-Forêt" },
+      { title: "Mentions légales | Cabinet dentaire Dandelion, Bussac-Forêt" },
       {
         name: "description",
         content: "Mentions légales du site du Cabinet Dentaire Dandelion à Bussac-Forêt (17210).",

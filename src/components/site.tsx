@@ -357,12 +357,16 @@ export function SiteHeader({
 }) {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-forest-deep/95 text-ivory backdrop-blur">
-      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-6 px-6">
-        <Link to="/" className="flex items-center gap-3" aria-label="Cabinet Dandelion — accueil">
-          <img src={logoUrl} alt="" className="h-12 w-12 object-contain" />
-          <span className="leading-tight">
-            <span className="block whitespace-nowrap font-serif text-xl text-ivory">
-              Cabinet Dandelion
+      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-5 sm:gap-6 sm:px-6">
+        <Link
+          to="/"
+          className="flex min-w-0 items-center gap-3"
+          aria-label="Cabinet dentaire Dandelion — accueil"
+        >
+          <img src={logoUrl} alt="" className="h-11 w-11 shrink-0 object-contain sm:h-12 sm:w-12" />
+          <span className="min-w-0 leading-tight">
+            <span className="block font-serif text-lg leading-[1.1] text-ivory sm:whitespace-nowrap sm:text-xl">
+              Cabinet dentaire Dandelion
             </span>
             <span className="hidden text-[11px] uppercase tracking-[0.18em] text-lichen sm:block">
               {subtitle}
@@ -423,7 +427,7 @@ export function SiteHeader({
 /* ───────────── Pied de page ───────────── */
 
 export function SiteFooter({
-  signature = "Cabinet Dandelion — Bussac-Forêt",
+  signature = "Cabinet dentaire Dandelion — Bussac-Forêt",
 }: {
   signature?: string;
 }) {
@@ -432,7 +436,7 @@ export function SiteFooter({
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 text-sm md:flex-row">
         <div className="flex items-center gap-3">
           <img src={logoUrl} alt="" className="h-9 w-9 object-contain" />
-          <span className="font-serif text-lg text-ivory">Cabinet Dandelion</span>
+          <span className="font-serif text-lg text-ivory">Cabinet dentaire Dandelion</span>
         </div>
         <nav
           className="flex flex-wrap items-center justify-center gap-6"

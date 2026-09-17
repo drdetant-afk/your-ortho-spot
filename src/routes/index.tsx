@@ -21,18 +21,21 @@ import {
   type ToothKind,
 } from "@/components/site";
 import logoUrl from "@/assets/logo-gold.png";
-import cabinet1 from "@/assets/cabinet-warm-1.png";
-import cabinet2 from "@/assets/cabinet-warm-2.png";
-import cabinet3 from "@/assets/cabinet-warm-3.png";
-import drDetantUrl from "@/assets/dr-detant-warm.png";
-import exterieurUrl from "@/assets/exterieur-cabinet.png";
+import salleAttenteUrl from "@/assets/salle-attente.jpg";
+import salleSoins1Url from "@/assets/salle-soins-1.jpg";
+import salleSoins2Url from "@/assets/salle-soins-2.jpg";
+import couloirUrl from "@/assets/couloir.jpg";
+import sterilisationUrl from "@/assets/sterilisation.jpg";
+import radiologieUrl from "@/assets/radiologie.jpg";
+import facadeUrl from "@/assets/facade.jpg";
+import drDetantUrl from "@/assets/dr-detant.jpg";
 import drJustineYeUrl from "@/assets/dr-justine-ye-portrait.jpg";
 import equipeUrl from "@/assets/equipe-cabinet.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Cabinet Dandelion — Dentiste & Orthodontiste à Bussac-Forêt" },
+      { title: "Cabinet dentaire Dandelion — Dentiste & Orthodontiste à Bussac-Forêt" },
       {
         name: "description",
         content:
@@ -51,7 +54,7 @@ const CABINET_JSONLD = {
   "@type": "Dentist",
   name: "Cabinet Dentaire Dandelion",
   url: `${SITE_URL}/`,
-  image: `${SITE_URL}/images/exterieur-cabinet.png`,
+  image: `${SITE_URL}/images/facade.jpg`,
   logo: `${SITE_URL}/images/logo-gold.png`,
   telephone: "+33546707287",
   email: "secretariat@dentairebussacforet.fr",
@@ -95,12 +98,6 @@ const SOINS: { dent: string; kind: ToothKind; title: string; text: string }[] = 
     text: "Traitements pour enfants, adolescents et adultes, avec le Dr Détant.",
   },
   {
-    dent: "11",
-    kind: "incisive",
-    title: "Esthétique dentaire",
-    text: "Des solutions pour retrouver confiance dans votre sourire.",
-  },
-  {
     dent: "41",
     kind: "gencive",
     title: "Parodontie",
@@ -123,7 +120,7 @@ function CabinetHomePage() {
         <div className="relative mx-auto max-w-[80rem] border border-gold/45 px-6 py-10 outline outline-1 outline-offset-[6px] outline-gold/20 sm:px-10 md:px-14 md:py-14">
           <div className="flex flex-wrap justify-between gap-x-6 gap-y-2 text-xs uppercase tracking-[0.24em] text-lichen">
             <span className="font-semibold text-gold">Planche I</span>
-            <span className="hidden sm:inline">Atlas du Cabinet Dandelion</span>
+            <span className="hidden sm:inline">Atlas du Cabinet dentaire Dandelion</span>
             <span>Bussac-Forêt · 17210</span>
           </div>
 
@@ -153,12 +150,12 @@ function CabinetHomePage() {
             </div>
             <div className="parallax-slow md:col-span-5 md:col-start-8">
               <Tirage
-                src={exterieurUrl}
-                alt="Façade du Cabinet Dandelion à Bussac-Forêt"
+                src={facadeUrl}
+                alt="Façade du Cabinet dentaire Dandelion, place du Champ de Foire à Bussac-Forêt"
                 legende="La façade, place du Champ de Foire"
                 numero="1"
                 tilt={-2}
-                ratio="5 / 4"
+                ratio="16 / 10"
                 loading="eager"
               />
             </div>
@@ -205,29 +202,55 @@ function CabinetHomePage() {
 
           <div className="reveal mt-20 grid items-start gap-12 md:grid-cols-12 md:gap-6">
             <Tirage
-              src={cabinet1}
-              alt="Salle d'attente du Cabinet Dandelion"
-              legende="La salle d'attente"
+              src={salleSoins1Url}
+              alt="Salle de soins du Cabinet dentaire Dandelion"
+              legende="Une salle de soins"
               numero="2"
               tilt={-2}
               className="md:col-span-5"
             />
             <Tirage
-              src={cabinet2}
-              alt="Couloir lumineux du Cabinet Dandelion"
-              legende="Le couloir"
+              src={couloirUrl}
+              alt="Couloir menant à l'accueil du Cabinet dentaire Dandelion"
+              legende="Le couloir, vers l'accueil"
               numero="3"
               tilt={1.5}
               ratio="4 / 5"
               className="md:col-span-3 md:mt-24"
             />
-            <div className="flex flex-col gap-8 md:col-span-4 md:mt-8">
+            <Tirage
+              src={sterilisationUrl}
+              alt="Salle de stérilisation du Cabinet dentaire Dandelion"
+              legende="La salle de stérilisation"
+              numero="4"
+              tilt={-1}
+              className="md:col-span-4 md:mt-8"
+            />
+            <Tirage
+              src={radiologieUrl}
+              alt="Appareil de radiographie panoramique du cabinet"
+              legende="La radiologie"
+              numero="5"
+              tilt={2}
+              ratio="4 / 5"
+              className="md:col-span-3 md:-mt-4"
+            />
+            <Tirage
+              src={salleAttenteUrl}
+              alt="Salle d'attente du Cabinet dentaire Dandelion"
+              legende="La salle d'attente"
+              numero="6"
+              tilt={-1.5}
+              ratio="4 / 3"
+              className="md:col-span-4 md:mt-10"
+            />
+            <div className="flex flex-col gap-8 md:col-span-5 md:mt-2">
               <Tirage
-                src={cabinet3}
-                alt="Salle de soins du Cabinet Dandelion"
-                legende="Une salle de soins"
-                numero="4"
-                tilt={-1}
+                src={salleSoins2Url}
+                alt="Seconde salle de soins, lumineuse, du Cabinet dentaire Dandelion"
+                legende="Une seconde salle de soins"
+                numero="7"
+                tilt={1}
               />
               <p className="border-t border-line pt-4 font-serif text-[17px] italic leading-relaxed text-lichen">
                 Légende. — Rez-de-chaussée, entrée accessible, parking gratuit à proximité.
@@ -295,9 +318,9 @@ function CabinetHomePage() {
           <div className="reveal mx-auto mt-20 max-w-xl">
             <Tirage
               src={equipeUrl}
-              alt="L'équipe du Cabinet Dandelion à l'accueil"
+              alt="L'équipe du Cabinet dentaire Dandelion à l'accueil"
               legende="Toute l'équipe, à l'accueil"
-              numero="5"
+              numero="8"
               tilt={1.5}
               ratio="534 / 510"
             />
@@ -366,7 +389,7 @@ function CabinetHomePage() {
                 </Link>
               </div>
             </div>
-            <ArcadeDentaire className="md:col-span-6" />
+            <ArcadeDentaire fig="9" className="md:col-span-6" />
           </div>
         </div>
       </section>
@@ -431,10 +454,15 @@ function CabinetHomePage() {
           </div>
           <figure className="m-0 md:col-span-5 md:col-start-8">
             <div className="mx-auto flex aspect-square max-w-[460px] flex-col items-center justify-center gap-5 border border-gold/35 outline outline-1 outline-offset-8 outline-gold/15">
-              <img src={logoUrl} alt="Logo du Cabinet Dandelion" loading="lazy" className="w-3/5" />
+              <img
+                src={logoUrl}
+                alt="Logo du Cabinet dentaire Dandelion"
+                loading="lazy"
+                className="w-3/5"
+              />
             </div>
             <figcaption className="mt-6 text-center font-serif text-lg italic text-lichen">
-              Ex-libris du Cabinet Dandelion
+              Ex-libris du Cabinet dentaire Dandelion
             </figcaption>
           </figure>
         </div>
