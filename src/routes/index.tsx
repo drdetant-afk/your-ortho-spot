@@ -129,12 +129,13 @@ function CabinetHomePage() {
 
           <div className="mt-10 grid items-center gap-14 md:grid-cols-12">
             <div className="md:col-span-6">
-              <h1 className="font-serif text-[3.2rem] leading-[0.95] text-ivory sm:text-7xl lg:text-[5.75rem]">
-                Des sourires qui prennent <em className="text-gold">racine.</em>
+              <h1 className="font-serif text-[2.9rem] leading-[1] text-ivory sm:text-6xl lg:text-[4.9rem]">
+                Un cabinet dentaire familial, <em className="text-gold">au cœur de Bussac-Forêt</em>
               </h1>
               <p className="mt-8 max-w-md text-lg leading-relaxed text-parchment">
-                Un cabinet familial au 26 place du Champ de Foire, qui réunit dentisterie générale
-                et orthodontie pour prendre soin de toute la famille, à chaque étape de la vie.
+                Le Dr Justine Ye, chirurgien-dentiste, et le Dr Lucas Détant, orthodontiste, vous
+                reçoivent place du Champ de Foire. Soins, prévention et orthodontie : des enfants
+                aux adultes, tout le suivi se fait au même endroit.
               </p>
               <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
                 <a href={PHONE_TEL} className={btn.gold}>
@@ -196,9 +197,9 @@ function CabinetHomePage() {
               </h2>
             </div>
             <p className="text-lg leading-relaxed text-parchment md:col-span-5 md:col-start-8">
-              Situé au cœur de Bussac-Forêt, le cabinet vous accueille dans un cadre pensé pour
-              votre confort, équipé pour des soins dentaires modernes et rassurants, pour les
-              enfants comme pour les adultes.
+              Le cabinet vous accueille de plain-pied, dans un cadre pensé pour votre confort,
+              équipé pour des soins dentaires modernes et rassurants, pour les enfants comme pour
+              les adultes.
             </p>
           </div>
 

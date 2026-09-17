@@ -128,11 +128,11 @@ export function MolaireAnnotee({ className = "" }: { className?: string }) {
       <div className="flex h-[150px] flex-col justify-between font-serif text-lg italic text-parchment">
         <span>
           <span className="font-sans text-xs not-italic tracking-[0.18em] text-gold">A.</span>{" "}
-          Couronne — ce que l'on voit
+          Couronne — émail et dentine
         </span>
         <span>
           <span className="font-sans text-xs not-italic tracking-[0.18em] text-gold">B.</span>{" "}
-          Racines — ce qui fait tenir
+          Racines — ancrage dans l'os
         </span>
       </div>
     </div>
