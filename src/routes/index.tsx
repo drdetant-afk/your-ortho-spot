@@ -1,275 +1,445 @@
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { createFileRoute } from "@tanstack/react-router";
-import { Calendar, MapPin, Phone, Mail, Car, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, ArrowUpRight, Calendar, Phone } from "lucide-react";
+import { DandelionSeeds } from "@/components/DandelionSeeds";
+import {
+  DOCTOLIB_ORTHO_URL,
+  ArcadeDentaire,
+  Fiche,
+  FicheClinique,
+  MAIL,
+  MAPS_URL,
+  PHONE_DISPLAY,
+  PHONE_TEL,
+  SITE_URL,
+  MolaireAnnotee,
+  Planche,
+  SiteFooter,
+  SiteHeader,
+  Tirage,
+  Tooth,
+  btn,
+  type ToothKind,
+} from "@/components/site";
 import logoUrl from "@/assets/logo-gold.png";
-import conseilsInconfortUrl from "@/assets/conseils-inconfort-v4.png";
-import afficheUrl from "@/assets/affiche-orthodontie.png";
 import cabinet1 from "@/assets/cabinet-warm-1.png";
 import cabinet2 from "@/assets/cabinet-warm-2.png";
 import cabinet3 from "@/assets/cabinet-warm-3.png";
 import drDetantUrl from "@/assets/dr-detant-warm.png";
 import exterieurUrl from "@/assets/exterieur-cabinet.png";
+import drJustineYeUrl from "@/assets/dr-justine-ye-portrait.jpg";
+import equipeUrl from "@/assets/equipe-cabinet.webp";
 
 export const Route = createFileRoute("/")({
-  component: HomePage,
+  head: () => ({
+    meta: [
+      { title: "Cabinet Dandelion — Dentiste & Orthodontiste à Bussac-Forêt" },
+      {
+        name: "description",
+        content:
+          "Cabinet dentaire Dandelion à Bussac-Forêt (17210) : dentisterie générale et orthodontie. Une équipe à votre écoute pour toute la famille.",
+      },
+      { property: "og:url", content: `${SITE_URL}/` },
+    ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
+  }),
+  component: CabinetHomePage,
 });
 
-const DOCTOLIB_URL =
-  "https://www.doctolib.fr/orthodontiste/bussac-foret/lucas-detant-bussac-foret";
+// Données structurées "cabinet dentaire" pour le référencement local
+const CABINET_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  name: "Cabinet Dentaire Dandelion",
+  url: `${SITE_URL}/`,
+  image: `${SITE_URL}/images/exterieur-cabinet.png`,
+  logo: `${SITE_URL}/images/logo-gold.png`,
+  telephone: "+33546707287",
+  email: "secretariat@dentairebussacforet.fr",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "26 Place du Champ de Foire",
+    postalCode: "17210",
+    addressLocality: "Bussac-Forêt",
+    addressCountry: "FR",
+  },
+  employee: [
+    {
+      "@type": "Person",
+      name: "Dr Lucas Détant",
+      jobTitle: "Orthodontiste — Spécialiste en Orthopédie Dento-Faciale",
+    },
+    {
+      "@type": "Person",
+      name: "Dr Justine Ye",
+      jobTitle: "Chirurgien-dentiste généraliste",
+    },
+  ],
+  sameAs: [
+    "https://www.doctolib.fr/orthodontiste/bussac-foret/lucas-detant-bussac-foret",
+    "https://www.pagesjaunes.fr/pros/64559455",
+  ],
+};
 
-function GoldDivider() {
+// Chaque soin est repéré par un numéro de dent (numérotation dentaire internationale).
+const SOINS: { dent: string; kind: ToothKind; title: string; text: string }[] = [
+  {
+    dent: "16",
+    kind: "molaire",
+    title: "Dentisterie générale",
+    text: "Soins conservateurs, détartrage, prévention et suivi régulier.",
+  },
+  {
+    dent: "13",
+    kind: "canine",
+    title: "Orthodontie",
+    text: "Traitements pour enfants, adolescents et adultes, avec le Dr Détant.",
+  },
+  {
+    dent: "11",
+    kind: "incisive",
+    title: "Esthétique dentaire",
+    text: "Des solutions pour retrouver confiance dans votre sourire.",
+  },
+  {
+    dent: "41",
+    kind: "gencive",
+    title: "Parodontie",
+    text: "Prévention et traitement des maladies des gencives et des tissus de soutien.",
+  },
+];
+
+function CabinetHomePage() {
   return (
-    <div className="flex items-center justify-center gap-3 my-6">
-      <span className="h-px w-12 bg-gold/60" />
-      <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-      <span className="h-px w-12 bg-gold/60" />
-    </div>
-  );
-}
+    <div className="min-h-screen bg-forest text-ivory">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(CABINET_JSONLD) }}
+      />
+      <SiteHeader />
 
-function HomePage() {
-  return (
-    <div className="min-h-screen">
-      <header className="sticky top-0 z-40 backdrop-blur bg-primary/95 text-primary-foreground border-b border-gold/20">
-        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-          <a href="#top" className="flex items-center gap-3">
-            <img src={logoUrl} alt="Dr Détant Lucas" className="h-12 w-12 object-contain" />
-            <div className="leading-tight">
-              <div className="font-serif text-xl text-gold">Dr Détant Lucas</div>
-              <div className="text-[11px] tracking-[0.18em] uppercase text-primary-foreground/70">Orthodontie · Bussac-Forêt</div>
-            </div>
-          </a>
-          <nav className="hidden md:flex items-center gap-8 text-sm">
-            <a href="#cabinet" className="hover:text-gold transition">Le cabinet</a>
-            <a href="#specialite" className="hover:text-gold transition">Spécialité</a>
-            <a href="#conseils" className="hover:text-gold transition">Fiches conseils</a>
-            <a href="#contact" className="hover:text-gold transition">Contact</a>
-          </nav>
-          <a
-            href={DOCTOLIB_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-gold px-4 py-2 text-primary text-sm font-medium hover:bg-gold-soft transition"
-          >
-            <Calendar className="w-4 h-4" />
-            Doctolib
-          </a>
-        </div>
-      </header>
-
-      <section id="top" className="relative overflow-hidden bg-primary text-primary-foreground">
-        <div className="absolute inset-0 opacity-40" style={{
-          backgroundImage: "radial-gradient(circle at 80% 30%, oklch(0.74 0.13 78 / 0.35), transparent 50%)",
-        }} />
-        <div className="relative max-w-6xl mx-auto px-6 py-24 md:py-32 grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="text-gold tracking-[0.25em] uppercase text-xs mb-6">Spécialiste qualifié</p>
-            <h1 className="font-serif text-5xl md:text-6xl leading-[1.05]">
-              Orthodontie<br />
-              <span className="text-gold italic">Orthopédie Dento-Faciale</span>
-            </h1>
-            <p className="mt-8 text-lg text-primary-foreground/80 max-w-lg font-light">
-              Dr <strong className="font-medium">Lucas Détant</strong> vous accueille
-              à Bussac-Forêt. Un suivi orthodontique attentif,
-              pour enfants, adolescents et adultes.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <a
-                href={DOCTOLIB_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-primary font-medium hover:bg-gold-soft transition shadow-lg shadow-black/20"
-              >
-                <Calendar className="w-5 h-5" />
-                Prendre rendez-vous
-              </a>
-              <a
-                href="#cabinet"
-                className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-7 py-3.5 hover:bg-gold/10 transition"
-              >
-                Découvrir le cabinet
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-          <div className="flex items-center justify-center">
-            <img
-              src={logoUrl}
-              alt="Emblème Dr Détant Lucas"
-              className="mx-auto w-full max-w-md drop-shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section id="specialite" className="py-24 px-6">
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="text-gold tracking-[0.25em] uppercase text-xs">Notre approche</p>
-          <h2 className="font-serif text-4xl md:text-5xl mt-4 text-primary">
-            Une expertise dédiée à votre sourire
-          </h2>
-          <GoldDivider />
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Diplômé en Orthopédie Dento-Faciale, ancien interne des Hôpitaux de Toulouse,
-            le Dr Détant met son expertise au service de tous les âges, avec des traitements
-            adaptés et personnalisés.
-          </p>
-        </div>
-
-        <div className="max-w-6xl mx-auto mt-16 grid md:grid-cols-2 gap-10 items-center">
-          <div className="relative order-1">
-            <div className="absolute -inset-3 rounded-3xl bg-gold/10 blur-2xl" />
-            <img
-              src={drDetantUrl}
-              alt="Dr Lucas Détant, spécialiste en orthodontie dento-faciale"
-              className="relative w-full max-w-md mx-auto rounded-3xl shadow-xl object-cover ring-1 ring-gold/30"
-            />
-          </div>
-          <div className="order-2 grid gap-5">
-            {[
-              { icon: GraduationCap, title: "Spécialiste qualifié", text: "Diplôme de spécialiste en Orthopédie Dento-Faciale (ODF). Ancien interne des Hôpitaux de Toulouse." },
-              { icon: Sparkles, title: "Traitements modernes", text: "Multi-attaches, traitements interceptifs, fonctionnels et mécaniques." },
-            ].map(({ icon: Icon, title, text }) => (
-              <div key={title} className="bg-card border border-border rounded-2xl p-8 hover:border-gold/50 transition group">
-                <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center text-primary group-hover:bg-gold/10 group-hover:text-gold transition">
-                  <Icon className="w-6 h-6" />
-                </div>
-                <h3 className="font-serif text-2xl mt-6 text-primary">{title}</h3>
-                <p className="mt-3 text-muted-foreground leading-relaxed">{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="cabinet" className="py-24 px-6 bg-secondary/40 border-y border-border">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center">
-            <p className="text-gold tracking-[0.25em] uppercase text-xs">Le cabinet</p>
-            <h2 className="font-serif text-4xl md:text-5xl mt-4 text-primary">
-              Un lieu calme & lumineux
-            </h2>
-            <GoldDivider />
-          </div>
-          <div className="mt-12 grid md:grid-cols-3 gap-5">
-            {[cabinet1, cabinet2, cabinet3].map((asset, i) => (
-              <div key={i} className="overflow-hidden rounded-2xl group">
-                <img
-                  src={asset}
-                  alt={`Cabinet du Dr Détant ${i + 1}`}
-                  loading="lazy"
-                  className="w-full h-72 object-cover group-hover:scale-105 transition duration-700"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="conseils" className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center">
-            <p className="text-gold tracking-[0.25em] uppercase text-xs">À découvrir</p>
-            <h2 className="font-serif text-4xl md:text-5xl mt-4 text-primary">Fiches conseils</h2>
-            <GoldDivider />
-            <p className="text-muted-foreground max-w-xl mx-auto">
-              Des informations claires pour mieux comprendre l'orthodontie et préparer votre consultation.
-            </p>
+      {/* ───── Planche I — Accueil ───── */}
+      <section id="top" className="relative overflow-hidden px-4 py-8 sm:px-8 md:py-12">
+        <DandelionSeeds className="absolute inset-0 h-full w-full" />
+        <div className="relative mx-auto max-w-[80rem] border border-gold/45 px-6 py-10 outline outline-1 outline-offset-[6px] outline-gold/20 sm:px-10 md:px-14 md:py-14">
+          <div className="flex flex-wrap justify-between gap-x-6 gap-y-2 text-xs uppercase tracking-[0.24em] text-lichen">
+            <span className="font-semibold text-gold">Planche I</span>
+            <span className="hidden sm:inline">Atlas du Cabinet Dandelion</span>
+            <span>Bussac-Forêt · 17210</span>
           </div>
 
-          <div className="mt-14 max-w-2xl mx-auto">
-            <Tabs defaultValue="demarrer" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 mb-6">
-                <TabsTrigger value="demarrer">Quand démarrer</TabsTrigger>
-                <TabsTrigger value="urgence">Urgence</TabsTrigger>
-              </TabsList>
-              <TabsContent value="demarrer">
-                <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
-                  <img src={afficheUrl} alt="L'Orthodontie : Consultation et Traitement" loading="lazy" className="w-full h-auto" />
-                </div>
-              </TabsContent>
-              <TabsContent value="urgence">
-                <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
-                  <img src={conseilsInconfortUrl} alt="Conseils en cas d'inconfort ou de blessure" loading="lazy" className="w-full h-auto" />
-                </div>
-              </TabsContent>
-            </Tabs>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" className="py-24 px-6 bg-primary text-primary-foreground">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
-          <div>
-            <p className="text-gold tracking-[0.25em] uppercase text-xs">Contact</p>
-            <h2 className="font-serif text-4xl md:text-5xl mt-4">Nous rendre visite</h2>
-            <GoldDivider />
-            <ul className="space-y-5 mt-8 text-primary-foreground/85">
-              <li className="flex gap-4"><MapPin className="w-5 h-5 text-gold mt-1 shrink-0" />
-                <span>26 Place du Champ de Foire<br />17210 Bussac-Forêt</span>
-              </li>
-              <li className="flex gap-4"><Calendar className="w-5 h-5 text-gold mt-1 shrink-0" />
-                <a href={DOCTOLIB_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition underline-offset-4 hover:underline">
-                  Prise de rendez-vous en ligne sur Doctolib
+          <div className="mt-10 grid items-center gap-14 md:grid-cols-12">
+            <div className="md:col-span-6">
+              <h1 className="font-serif text-[3.2rem] leading-[0.95] text-ivory sm:text-7xl lg:text-[5.75rem]">
+                Des sourires qui prennent <em className="text-gold">racine.</em>
+              </h1>
+              <p className="mt-8 max-w-md text-lg leading-relaxed text-parchment">
+                Un cabinet familial au 26 place du Champ de Foire, qui réunit dentisterie générale
+                et orthodontie pour prendre soin de toute la famille, à chaque étape de la vie.
+              </p>
+              <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+                <a href={PHONE_TEL} className={btn.gold}>
+                  <Phone className="h-4 w-4" />
+                  Appeler le secrétariat
                 </a>
-              </li>
-              <li className="flex gap-4"><Phone className="w-5 h-5 text-gold mt-1 shrink-0" />
-                <a href="tel:+33546707287" className="hover:text-gold transition">05 46 70 72 87</a>
-              </li>
-              <li className="flex gap-4"><Mail className="w-5 h-5 text-gold mt-1 shrink-0" />
-                <a href="mailto:secretariat@dentairebussacforet.fr" className="hover:text-gold transition">secretariat@dentairebussacforet.fr</a>
-              </li>
-              <li className="flex gap-4"><Car className="w-5 h-5 text-gold mt-1 shrink-0" />
-                <span>Parking gratuit à proximité</span>
-              </li>
-            </ul>
-            <a
-              href={DOCTOLIB_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-primary font-medium hover:bg-gold-soft transition mt-10"
-            >
-              <Calendar className="w-5 h-5" />
-              Prendre rendez-vous
-            </a>
-          </div>
-          <div className="space-y-5">
-            <div className="rounded-2xl overflow-hidden border border-gold/20">
-              <img src={exterieurUrl} alt="Extérieur du cabinet du Dr Détant à Bussac-Forêt" loading="lazy" className="w-full h-56 object-cover" />
+                <Link
+                  to="/orthodontie"
+                  className="inline-flex items-center gap-2 border-b border-gold/60 py-2 font-serif text-xl text-gold transition hover:border-gold"
+                >
+                  Orthodontie <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+              <MolaireAnnotee className="mt-14 hidden sm:flex" />
             </div>
-            <div className="rounded-2xl overflow-hidden border border-gold/20 min-h-[280px]">
-              <iframe
-                title="Carte du cabinet"
-                src="https://www.google.com/maps?q=26+Place+du+Champ+de+Foire,+17210+Bussac-For%C3%AAt&output=embed"
-                className="w-full h-full min-h-[280px]"
-                loading="lazy"
+            <div className="parallax-slow md:col-span-5 md:col-start-8">
+              <Tirage
+                src={exterieurUrl}
+                alt="Façade du Cabinet Dandelion à Bussac-Forêt"
+                legende="La façade, place du Champ de Foire"
+                numero="1"
+                tilt={-2}
+                ratio="5 / 4"
+                loading="eager"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <footer className="bg-primary text-primary-foreground/70 border-t border-gold/20 py-10 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
-          <div className="flex items-center gap-3">
-            <img src={logoUrl} alt="" className="h-8 w-8 object-contain" />
-            <span className="font-serif text-gold">Dr Détant Lucas</span>
+      {/* ───── Encart orthodontie ───── */}
+      <div className="px-4 pb-6 sm:px-8">
+        <div className="mx-auto flex max-w-[80rem] flex-col items-start justify-between gap-6 rounded-[1.25rem] bg-sand px-8 py-8 text-ink sm:flex-row sm:items-center md:px-12">
+          <div className="flex items-center gap-6">
+            <Tooth kind="canine" className="hidden h-16 w-10 shrink-0 text-[#8a6b2c] sm:block" />
+            <div>
+              <p className="font-serif text-2xl text-ink md:text-[1.75rem]">
+                Traitement orthodontique en cours ou à prévoir ?
+              </p>
+              <p className="mt-1 text-[17px] text-ink-soft">
+                Toutes les informations du Dr Lucas Détant sont sur sa page dédiée.
+              </p>
+            </div>
           </div>
-          <p>© {new Date().getFullYear()} Dr Lucas Détant — Spécialiste en Orthopédie Dento-Faciale</p>
+          <Link to="/orthodontie" className={`${btn.forest} shrink-0`}>
+            Page orthodontie <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
-      </footer>
+      </div>
 
-      <a
-        href="#top"
-        aria-label="Retour en haut"
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary border border-gold/30 shadow-2xl flex items-center justify-center overflow-hidden hover:bg-primary/90 transition"
-      >
-        <img
-          src={logoUrl}
-          alt="Dr Détant Lucas"
-          className="h-10 w-10 object-contain"
-        />
-      </a>
+      {/* ───── Planche II — Le cabinet ───── */}
+      <section id="cabinet" className="px-6 py-28">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-10 md:grid-cols-12 md:items-end">
+            <div className="md:col-span-6">
+              <Planche numero="II">Le cabinet</Planche>
+              <h2 className="mt-5 font-serif text-5xl leading-[1] text-ivory md:text-6xl">
+                Un lieu calme <em className="text-gold">&amp; lumineux</em>
+              </h2>
+            </div>
+            <p className="text-lg leading-relaxed text-parchment md:col-span-5 md:col-start-8">
+              Situé au cœur de Bussac-Forêt, le cabinet vous accueille dans un cadre pensé pour
+              votre confort, équipé pour des soins dentaires modernes et rassurants, pour les
+              enfants comme pour les adultes.
+            </p>
+          </div>
+
+          <div className="reveal mt-20 grid items-start gap-12 md:grid-cols-12 md:gap-6">
+            <Tirage
+              src={cabinet1}
+              alt="Salle d'attente du Cabinet Dandelion"
+              legende="La salle d'attente"
+              numero="2"
+              tilt={-2}
+              className="md:col-span-5"
+            />
+            <Tirage
+              src={cabinet2}
+              alt="Couloir lumineux du Cabinet Dandelion"
+              legende="Le couloir"
+              numero="3"
+              tilt={1.5}
+              ratio="4 / 5"
+              className="md:col-span-3 md:mt-24"
+            />
+            <div className="flex flex-col gap-8 md:col-span-4 md:mt-8">
+              <Tirage
+                src={cabinet3}
+                alt="Salle de soins du Cabinet Dandelion"
+                legende="Une salle de soins"
+                numero="4"
+                tilt={-1}
+              />
+              <p className="border-t border-line pt-4 font-serif text-[17px] italic leading-relaxed text-lichen">
+                Légende. — Rez-de-chaussée, entrée accessible, parking gratuit à proximité.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ───── Planche III — L'équipe ───── */}
+      <section id="equipe" className="bg-sand px-6 py-28 text-ink">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col items-center text-center">
+            <Planche numero="III" tone="light">
+              L'équipe
+            </Planche>
+            <h2 className="mt-4 font-serif text-5xl leading-[1] md:text-6xl">
+              Deux expertises <em className="text-[#8a6b2c]">complémentaires</em>
+            </h2>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
+              Une chirurgienne-dentiste généraliste et un orthodontiste, pour un suivi dentaire
+              complet, du plus jeune au plus âgé.
+            </p>
+          </div>
+
+          <div className="reveal mt-16 grid gap-8 lg:grid-cols-2">
+            <FicheClinique
+              numero="01"
+              discipline="Orthodontie"
+              photo={drDetantUrl}
+              nom="Dr Lucas Détant"
+              rows={[
+                { label: "Spécialité", value: "Orthopédie dento-faciale" },
+                { label: "Parcours", value: "Ancien interne des Hôpitaux de Toulouse" },
+                { label: "Patients", value: "Enfants, adolescents et adultes" },
+              ]}
+            >
+              <Link
+                to="/orthodontie"
+                className="inline-flex items-center gap-2 self-start py-2 font-semibold text-ink underline decoration-[#8a6b2c]/50 underline-offset-4 hover:decoration-[#8a6b2c]"
+              >
+                Découvrir l'orthodontie <ArrowRight className="h-4 w-4" />
+              </Link>
+            </FicheClinique>
+
+            <FicheClinique
+              numero="02"
+              discipline="Omnipratique"
+              photo={drJustineYeUrl}
+              nom="Dr Justine Ye"
+              rows={[
+                { label: "Exercice", value: "Chirurgien-dentiste généraliste" },
+                {
+                  label: "Parcours",
+                  value: "Diplôme d'État de docteur en chirurgie dentaire — Université de Bordeaux",
+                },
+                {
+                  label: "Soins",
+                  value: "Conservateurs, prévention, parodontie, esthétique dentaire",
+                },
+              ]}
+            />
+          </div>
+
+          <div className="reveal mx-auto mt-20 max-w-xl">
+            <Tirage
+              src={equipeUrl}
+              alt="L'équipe du Cabinet Dandelion à l'accueil"
+              legende="Toute l'équipe, à l'accueil"
+              numero="5"
+              tilt={1.5}
+              ratio="534 / 510"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ───── Planche IV — Nos soins ───── */}
+      <section className="px-6 py-28">
+        <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <Planche numero="IV">Nos soins</Planche>
+            <h2 className="mt-5 font-serif text-5xl leading-[1] text-ivory">
+              Un suivi dentaire <em className="text-gold">complet</em>
+            </h2>
+            <p className="mt-6 font-serif text-[17px] italic leading-relaxed text-lichen">
+              Chaque soin est repéré par un numéro de dent, selon la numérotation dentaire
+              internationale.
+            </p>
+          </div>
+          <ol className="reveal m-0 list-none border-t border-line p-0 md:col-span-7 md:col-start-6">
+            {SOINS.map((s) => (
+              <li
+                key={s.title}
+                className="grid grid-cols-[3rem_2.5rem_1fr] items-center gap-x-4 gap-y-2 border-b border-line py-7 sm:grid-cols-[3.5rem_3rem_14.5rem_1fr] sm:gap-x-5"
+              >
+                <span className="font-serif text-3xl text-gold">{s.dent}</span>
+                <Tooth kind={s.kind} className="h-12 w-10 text-gold" />
+                <h3 className="font-serif text-[1.65rem] font-normal leading-tight text-ivory">
+                  {s.title}
+                </h3>
+                <p className="col-span-3 text-parchment sm:col-span-1">{s.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ───── Planche V — Rendez-vous orthodontie ───── */}
+      <section className="px-6 pb-28">
+        <div className="reveal relative mx-auto max-w-6xl rounded-[1.75rem] border-[1.5px] border-dashed border-gold/60 px-8 py-14 md:px-16">
+          <span className="absolute -top-3 left-8 bg-forest px-3 text-xs font-semibold uppercase tracking-[0.24em] text-gold md:left-12">
+            Planche V — Rendez-vous orthodontie
+          </span>
+          <div className="grid items-center gap-12 md:grid-cols-12">
+            <div className="md:col-span-6">
+              <h2 className="font-serif text-5xl leading-[1] text-ivory md:text-6xl">
+                Consultation <em className="text-gold">d'orthodontie</em>
+              </h2>
+              <p className="mt-6 max-w-lg text-lg leading-relaxed text-parchment">
+                Avec le Dr Lucas Détant. Ce rendez-vous concerne uniquement l'orthodontie : pour des
+                soins dentaires, contactez le secrétariat.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href={DOCTOLIB_ORTHO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={btn.gold}
+                >
+                  <Calendar className="h-4 w-4" />
+                  Réserver sur Doctolib
+                </a>
+                <Link to="/orthodontie" className={btn.ghostOnForest}>
+                  En savoir plus
+                </Link>
+              </div>
+            </div>
+            <ArcadeDentaire className="md:col-span-6" />
+          </div>
+        </div>
+      </section>
+
+      {/* ───── Contact ───── */}
+      <section id="contact" className="bg-forest-deep px-6 py-28">
+        <div className="mx-auto grid max-w-6xl items-center gap-16 md:grid-cols-12">
+          <div className="md:col-span-6">
+            <Planche numero="VI">Contact</Planche>
+            <h2 className="mt-5 font-serif text-5xl leading-[1] text-ivory md:text-6xl">
+              Nous rendre <em className="text-gold">visite</em>
+            </h2>
+            <div className="mt-10">
+              <Fiche
+                rows={[
+                  {
+                    label: "Adresse",
+                    value: (
+                      <>
+                        26 place du Champ de Foire
+                        <br />
+                        17210 Bussac-Forêt
+                      </>
+                    ),
+                  },
+                  {
+                    label: "Téléphone",
+                    value: (
+                      <a href={PHONE_TEL} className="hover:text-gold">
+                        {PHONE_DISPLAY}
+                      </a>
+                    ),
+                  },
+                  {
+                    label: "E-mail",
+                    value: (
+                      <a href={`mailto:${MAIL}`} className="break-all hover:text-gold">
+                        {MAIL}
+                      </a>
+                    ),
+                  },
+                  { label: "Accès", value: "Parking gratuit à proximité" },
+                ]}
+              />
+            </div>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a href={PHONE_TEL} className={btn.gold}>
+                <Phone className="h-4 w-4" />
+                Appeler le secrétariat
+              </a>
+              {/* Lien vers Google Maps plutôt qu'une iframe : aucun cookie Google
+                  n'est déposé tant que le visiteur ne clique pas (RGPD/CNIL) */}
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={btn.ghostOnForest}
+              >
+                Itinéraire <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+          <figure className="m-0 md:col-span-5 md:col-start-8">
+            <div className="mx-auto flex aspect-square max-w-[460px] flex-col items-center justify-center gap-5 border border-gold/35 outline outline-1 outline-offset-8 outline-gold/15">
+              <img src={logoUrl} alt="Logo du Cabinet Dandelion" loading="lazy" className="w-3/5" />
+            </div>
+            <figcaption className="mt-6 text-center font-serif text-lg italic text-lichen">
+              Ex-libris du Cabinet Dandelion
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <SiteFooter />
     </div>
   );
 }
