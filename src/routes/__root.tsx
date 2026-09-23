@@ -16,17 +16,17 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+        <h1 className="font-serif text-7xl text-ivory">404</h1>
+        <h2 className="mt-4 font-serif text-2xl text-ivory">Cette page n&apos;existe pas</h2>
+        <p className="mt-3 text-parchment">
+          La page recherchée a peut-être été déplacée, ou son adresse comporte une erreur.
         </p>
         <div className="mt-6">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            Retour à l&apos;accueil
           </Link>
         </div>
       </div>
@@ -45,10 +45,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+          Cette page n&apos;a pas pu s&apos;afficher
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          Un problème est survenu de notre côté. Réessayez, ou revenez à l&apos;accueil.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -58,13 +58,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
+            Réessayer
           </button>
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Go home
+            Retour à l&apos;accueil
           </a>
         </div>
       </div>
@@ -72,23 +72,55 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const SITE_URL = "https://www.dentairebussacforet.fr";
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Cabinet Dandelion — Dr Lucas Détant, Orthodontiste à Bussac-Forêt" },
-      { name: "description", content: "Spécialiste qualifié en Orthodontie, Orthopédie Dento-Faciale. Dr Lucas Détant vous accueille au Cabinet Dandelion à Bussac-Forêt (17210). Rendez-vous en ligne." },
-      { property: "og:title", content: "Cabinet Dandelion — Dr Lucas Détant" },
-      { property: "og:description", content: "Spécialiste en Orthodontie Dento-Faciale à Bussac-Forêt." },
+      { name: "theme-color", content: "#16302a" },
+      { title: "Cabinet dentaire Dandelion — Chirurgiens-dentistes à Bussac-Forêt" },
+      {
+        name: "description",
+        content:
+          "Cabinet dentaire Dandelion à Bussac-Forêt (17210) : dentisterie générale avec le Dr Justine Ye et orthodontie avec le Dr Lucas Détant. Rendez-vous en ligne.",
+      },
+      {
+        property: "og:title",
+        content: "Cabinet dentaire Dandelion — Chirurgiens-dentistes à Bussac-Forêt",
+      },
+      {
+        property: "og:description",
+        content:
+          "Dentisterie générale et orthodontie à Bussac-Forêt (17210), pour toute la famille.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "fr_FR" },
+      { property: "og:site_name", content: "Cabinet dentaire Dandelion" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:image", content: `${SITE_URL}/images/facade.jpg` },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: `${SITE_URL}/images/facade.jpg` },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" },
+      { rel: "icon", href: "/images/logo-gold.png", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/images/logo-gold.png" },
+      {
+        rel: "preload",
+        href: "/fonts/newsreader-latin.woff2",
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "preload",
+        href: "/fonts/source-sans-3-latin.woff2",
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -99,7 +131,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <HeadContent />
       </head>

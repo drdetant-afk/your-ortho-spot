@@ -4,6 +4,38 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Polices auto-hébergées (conformité RGPD/CNIL : aucune requête vers Google) */
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/newsreader-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/newsreader-italic-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/fonts/source-sans-3-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -31,47 +63,242 @@
   --color-ring: var(--ring);
   --color-gold: var(--gold);
   --color-gold-soft: var(--gold-soft);
-  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-sand: var(--sand);
+  --color-ivory: var(--ivory);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-parchment: var(--parchment);
+  --color-lichen: var(--lichen);
+  --color-line: var(--line);
+  --font-serif: "Newsreader", ui-serif, Georgia, serif;
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.5rem;
-  /* Paper cream */
-  --background: oklch(0.975 0.012 85);
-  --foreground: oklch(0.22 0.04 155);
-  --card: oklch(0.985 0.008 85);
-  --card-foreground: oklch(0.22 0.04 155);
-  --popover: oklch(0.985 0.008 85);
-  --popover-foreground: oklch(0.22 0.04 155);
-  /* Deep forest green */
-  --primary: oklch(0.27 0.06 150);
-  --primary-foreground: oklch(0.97 0.02 85);
-  --secondary: oklch(0.94 0.02 85);
-  --secondary-foreground: oklch(0.27 0.06 150);
-  --muted: oklch(0.94 0.015 85);
-  --muted-foreground: oklch(0.45 0.03 130);
-  --accent: oklch(0.78 0.12 80);
-  --accent-foreground: oklch(0.22 0.04 155);
-  --destructive: oklch(0.55 0.2 27);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.88 0.02 85);
-  --input: oklch(0.88 0.02 85);
-  --ring: oklch(0.27 0.06 150);
-  /* Brand accents */
-  --gold: oklch(0.74 0.13 78);
-  --gold-soft: oklch(0.85 0.08 82);
+  --radius: 0.75rem;
+
+  /* Charte « Herbier » — tons Dandelion */
+  --forest: #16302a; /* vert forêt : fond principal */
+  --forest-deep: #10251f; /* en-tête, pied de page */
+  --sand: #f0d9b5; /* sable : encarts clairs */
+  --ivory: #faf6ee; /* ivoire : titres sur vert, papier des tirages */
+  --parchment: #e3d6ba; /* texte courant sur vert */
+  --lichen: #b9ad8f; /* libellés discrets sur vert */
+  --ink: #16302a; /* texte sur fond clair */
+  --ink-soft: #3f5048; /* texte courant sur fond clair */
+  --gold: #c9a45c; /* or du logo */
+  --gold-soft: #dcbf86;
+  --line: rgb(201 164 92 / 0.28);
+
+  --background: var(--forest);
+  --foreground: var(--ivory);
+  --card: var(--ivory);
+  --card-foreground: var(--ink);
+  --popover: var(--ivory);
+  --popover-foreground: var(--ink);
+  --primary: var(--gold);
+  --primary-foreground: var(--forest);
+  --secondary: var(--sand);
+  --secondary-foreground: var(--ink);
+  --muted: #1e3a33;
+  --muted-foreground: var(--lichen);
+  --accent: var(--gold-soft);
+  --accent-foreground: var(--forest);
+  --destructive: #b4432f;
+  --destructive-foreground: #ffffff;
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--gold);
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
+  html {
+    scroll-behavior: smooth;
+    /* compense l'en-tête collant lors des sauts d'ancre */
+    scroll-padding-top: 6rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  * {
+    border-color: var(--color-border);
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    background-image:
-      radial-gradient(circle at 20% 10%, oklch(0.96 0.025 85 / 0.8), transparent 50%),
-      radial-gradient(circle at 80% 90%, oklch(0.94 0.03 80 / 0.6), transparent 55%);
+    -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4 { font-family: var(--font-serif); letter-spacing: -0.01em; }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+  }
+  ::selection {
+    background: var(--gold);
+    color: var(--forest);
+  }
+
+  /* Grain de papier : bruit généré en SVG (aucune image à charger),
+     posé sur toute la page pour casser l'aplat des grands fonds. */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+  }
+  @media print {
+    body::after {
+      display: none;
+    }
+  }
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Retour visuel au clic sur les boutons-pilules */
+  a.rounded-full:active,
+  button.rounded-full:active {
+    transform: scale(0.96);
+  }
+
+  /* Soulignement doré qui glisse sous les liens du menu */
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  /* Tirage photo posé sur la page, façon herbier */
+  .tirage {
+    transform: rotate(var(--tilt, 0deg));
+    transition:
+      transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 0.5s ease;
+    box-shadow:
+      0 1px 0 rgb(0 0 0 / 0.08),
+      0 24px 48px -28px rgb(0 0 0 / 0.65);
+  }
+  .tirage:hover {
+    transform: rotate(0deg) translateY(-4px);
+    box-shadow:
+      0 1px 0 rgb(0 0 0 / 0.08),
+      0 32px 60px -30px rgb(0 0 0 / 0.7);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tirage,
+    .tirage:hover {
+      transition: none;
+    }
+  }
+
+  /* Trame de papier millimétré, sur les fonds clairs */
+  .trame {
+    background-image:
+      repeating-linear-gradient(0deg, rgb(138 107 44 / 0.055) 0 1px, transparent 1px 26px),
+      repeating-linear-gradient(90deg, rgb(138 107 44 / 0.055) 0 1px, transparent 1px 26px);
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Parallaxe légère : le visuel du bandeau descend un peu moins vite
+   que le défilement. Amélioration progressive, comme .reveal. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .parallax-slow {
+      animation: parallax-drift linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0px 700px;
+    }
+  }
+}
+@keyframes parallax-drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(48px);
+  }
+}
+
+/* Apparition douce des blocs au défilement.
+   Amélioration progressive : ignorée par les navigateurs sans animation-timeline
+   et par les visiteurs qui préfèrent réduire les animations. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-up both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+/* Traits qui se dessinent : les illustrations au trait (dent, molaire annotée,
+   arcade) s'écrivent comme sous une plume quand elles entrent à l'écran.
+   Chaque forme porte pathLength="1", d'où un tracé de vitesse constante. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .trace [data-trace] {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: trace-draw linear both;
+      animation-timeline: view();
+      animation-range: entry calc(6% + var(--i, 0) * 2.5%) entry calc(55% + var(--i, 0) * 2.5%);
+    }
+    .trace [data-trace-fade] {
+      opacity: 0;
+      animation: trace-fade linear both;
+      animation-timeline: view();
+      animation-range: entry 45% entry 75%;
+    }
+  }
+}
+@keyframes trace-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes trace-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
