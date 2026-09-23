@@ -11,7 +11,9 @@
   font-weight: 200 800;
   font-display: swap;
   src: url("/fonts/newsreader-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
   font-family: "Newsreader";
@@ -19,7 +21,9 @@
   font-weight: 200 800;
   font-display: swap;
   src: url("/fonts/newsreader-italic-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
   font-family: "Source Sans 3";
@@ -27,7 +31,9 @@
   font-weight: 200 900;
   font-display: swap;
   src: url("/fonts/source-sans-3-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @theme inline {
@@ -74,15 +80,15 @@
   --radius: 0.75rem;
 
   /* Charte « Herbier » — tons Dandelion */
-  --forest: #16302a;        /* vert forêt : fond principal */
-  --forest-deep: #10251f;   /* en-tête, pied de page */
-  --sand: #f0d9b5;          /* sable : encarts clairs */
-  --ivory: #faf6ee;         /* ivoire : titres sur vert, papier des tirages */
-  --parchment: #e3d6ba;     /* texte courant sur vert */
-  --lichen: #b9ad8f;        /* libellés discrets sur vert */
-  --ink: #16302a;           /* texte sur fond clair */
-  --ink-soft: #3f5048;      /* texte courant sur fond clair */
-  --gold: #c9a45c;          /* or du logo */
+  --forest: #16302a; /* vert forêt : fond principal */
+  --forest-deep: #10251f; /* en-tête, pied de page */
+  --sand: #f0d9b5; /* sable : encarts clairs */
+  --ivory: #faf6ee; /* ivoire : titres sur vert, papier des tirages */
+  --parchment: #e3d6ba; /* texte courant sur vert */
+  --lichen: #b9ad8f; /* libellés discrets sur vert */
+  --ink: #16302a; /* texte sur fond clair */
+  --ink-soft: #3f5048; /* texte courant sur fond clair */
+  --gold: #c9a45c; /* or du logo */
   --gold-soft: #dcbf86;
   --line: rgb(201 164 92 / 0.28);
 
@@ -114,18 +120,54 @@
     scroll-padding-top: 6rem;
   }
   @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
+    html {
+      scroll-behavior: auto;
+    }
   }
-  * { border-color: var(--color-border); }
+  * {
+    border-color: var(--color-border);
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 300; letter-spacing: -0.015em; }
-  ::selection { background: var(--gold); color: var(--forest); }
-  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+  }
+  ::selection {
+    background: var(--gold);
+    color: var(--forest);
+  }
+
+  /* Grain de papier : bruit généré en SVG (aucune image à charger),
+     posé sur toute la page pour casser l'aplat des grands fonds. */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+  }
+  @media print {
+    body::after {
+      display: none;
+    }
+  }
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
 }
 
 @layer components {
@@ -154,15 +196,31 @@
   /* Tirage photo posé sur la page, façon herbier */
   .tirage {
     transform: rotate(var(--tilt, 0deg));
-    transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.5s ease;
-    box-shadow: 0 1px 0 rgb(0 0 0 / 0.08), 0 24px 48px -28px rgb(0 0 0 / 0.65);
+    transition:
+      transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 0.5s ease;
+    box-shadow:
+      0 1px 0 rgb(0 0 0 / 0.08),
+      0 24px 48px -28px rgb(0 0 0 / 0.65);
   }
   .tirage:hover {
     transform: rotate(0deg) translateY(-4px);
-    box-shadow: 0 1px 0 rgb(0 0 0 / 0.08), 0 32px 60px -30px rgb(0 0 0 / 0.7);
+    box-shadow:
+      0 1px 0 rgb(0 0 0 / 0.08),
+      0 32px 60px -30px rgb(0 0 0 / 0.7);
   }
   @media (prefers-reduced-motion: reduce) {
-    .tirage, .tirage:hover { transition: none; }
+    .tirage,
+    .tirage:hover {
+      transition: none;
+    }
+  }
+
+  /* Trame de papier millimétré, sur les fonds clairs */
+  .trame {
+    background-image:
+      repeating-linear-gradient(0deg, rgb(138 107 44 / 0.055) 0 1px, transparent 1px 26px),
+      repeating-linear-gradient(90deg, rgb(138 107 44 / 0.055) 0 1px, transparent 1px 26px);
   }
 
   .nav-link:hover::after,
@@ -183,8 +241,12 @@
   }
 }
 @keyframes parallax-drift {
-  from { transform: translateY(0); }
-  to { transform: translateY(48px); }
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(48px);
+  }
 }
 
 /* Apparition douce des blocs au défilement.
@@ -199,7 +261,44 @@
     }
   }
 }
+/* Traits qui se dessinent : les illustrations au trait (dent, molaire annotée,
+   arcade) s'écrivent comme sous une plume quand elles entrent à l'écran.
+   Chaque forme porte pathLength="1", d'où un tracé de vitesse constante. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .trace [data-trace] {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: trace-draw linear both;
+      animation-timeline: view();
+      animation-range: entry calc(6% + var(--i, 0) * 2.5%) entry calc(55% + var(--i, 0) * 2.5%);
+    }
+    .trace [data-trace-fade] {
+      opacity: 0;
+      animation: trace-fade linear both;
+      animation-timeline: view();
+      animation-range: entry 45% entry 75%;
+    }
+  }
+}
+@keyframes trace-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes trace-fade {
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes reveal-up {
-  from { opacity: 0; transform: translateY(28px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

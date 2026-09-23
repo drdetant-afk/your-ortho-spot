@@ -89,6 +89,10 @@ function MentionsLegalesPage() {
             </a>
             .
           </p>
+          <p>
+            Aucun autre prestataire n&apos;assure le stockage de données traitées dans le cadre de
+            l&apos;édition de ce site : le site ne collecte ni ne traite de données personnelles.
+          </p>
         </Section>
 
         <Section title="Données personnelles et cookies">

@@ -5,7 +5,12 @@ import {
   DOCTOLIB_ORTHO_URL,
   ArcadeDentaire,
   Fiche,
+  BordDeckle,
+  CulDeLampe,
   FicheClinique,
+  Filigrane,
+  HORAIRES,
+  HORAIRES_JSONLD,
   MAIL,
   MAPS_URL,
   PHONE_DISPLAY,
@@ -77,6 +82,7 @@ const CABINET_JSONLD = {
       jobTitle: "Chirurgien-dentiste généraliste",
     },
   ],
+  openingHoursSpecification: HORAIRES_JSONLD,
   sameAs: [
     "https://www.doctolib.fr/orthodontiste/bussac-foret/lucas-detant-bussac-foret",
     "https://www.pagesjaunes.fr/pros/64559455",
@@ -184,8 +190,9 @@ function CabinetHomePage() {
       </div>
 
       {/* ───── Planche II — Le cabinet ───── */}
-      <section id="cabinet" className="px-6 py-28">
-        <div className="mx-auto max-w-6xl">
+      <section id="cabinet" className="relative overflow-hidden px-6 py-28">
+        <Filigrane numero="II" className="-right-8 top-10 hidden lg:block" />
+        <div className="relative mx-auto max-w-6xl">
           <div className="grid gap-10 md:grid-cols-12 md:items-end">
             <div className="md:col-span-6">
               <Planche numero="II">Le cabinet</Planche>
@@ -241,10 +248,10 @@ function CabinetHomePage() {
               legende="La salle d'attente"
               numero="6"
               tilt={-1.5}
-              ratio="4 / 3"
-              className="md:col-span-4 md:mt-10"
+              ratio="4 / 5"
+              className="md:col-span-3 md:mt-10"
             />
-            <div className="flex flex-col gap-8 md:col-span-5 md:mt-2">
+            <div className="flex flex-col gap-8 md:col-span-5 md:col-start-8 md:mt-2">
               <Tirage
                 src={salleSoins2Url}
                 alt="Seconde salle de soins, lumineuse, du Cabinet dentaire Dandelion"
@@ -261,8 +268,13 @@ function CabinetHomePage() {
       </section>
 
       {/* ───── Planche III — L'équipe ───── */}
-      <section id="equipe" className="bg-sand px-6 py-28 text-ink">
-        <div className="mx-auto max-w-6xl">
+      <BordDeckle />
+      <section
+        id="equipe"
+        className="trame relative overflow-hidden bg-sand px-6 pb-28 pt-20 text-ink"
+      >
+        <Filigrane numero="III" tone="light" className="-left-10 top-16 hidden lg:block" />
+        <div className="relative mx-auto max-w-6xl">
           <div className="flex flex-col items-center text-center">
             <Planche numero="III" tone="light">
               L'équipe
@@ -328,9 +340,12 @@ function CabinetHomePage() {
         </div>
       </section>
 
+      <BordDeckle position="bas" />
+
       {/* ───── Planche IV — Nos soins ───── */}
-      <section className="px-6 py-28">
-        <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-12">
+      <section className="relative overflow-hidden px-6 py-28">
+        <Filigrane numero="IV" className="-left-10 bottom-4 hidden lg:block" />
+        <div className="relative mx-auto grid max-w-6xl gap-12 md:grid-cols-12">
           <div className="md:col-span-4">
             <Planche numero="IV">Nos soins</Planche>
             <h2 className="mt-5 font-serif text-5xl leading-[1] text-ivory">
@@ -358,6 +373,8 @@ function CabinetHomePage() {
           </ol>
         </div>
       </section>
+
+      <CulDeLampe className="pb-16" />
 
       {/* ───── Planche V — Rendez-vous orthodontie ───── */}
       <section className="px-6 pb-28">
@@ -429,6 +446,19 @@ function CabinetHomePage() {
                       <a href={`mailto:${MAIL}`} className="break-all hover:text-gold">
                         {MAIL}
                       </a>
+                    ),
+                  },
+                  {
+                    label: "Horaires",
+                    value: (
+                      <span className="block space-y-1">
+                        {HORAIRES.map((h) => (
+                          <span key={h.jours} className="block">
+                            <span className="text-lichen">{h.jours} : </span>
+                            {h.heures}
+                          </span>
+                        ))}
+                      </span>
                     ),
                   },
                   { label: "Accès", value: "Parking gratuit à proximité" },

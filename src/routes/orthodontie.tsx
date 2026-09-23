@@ -4,7 +4,11 @@ import { DandelionSeeds } from "@/components/DandelionSeeds";
 import {
   DOCTOLIB_ORTHO_URL,
   ArcadeDentaire,
+  CulDeLampe,
   Fiche,
+  Filigrane,
+  HORAIRES,
+  HORAIRES_JSONLD,
   Planche,
   MAIL,
   MAPS_URL,
@@ -57,6 +61,7 @@ const ORTHO_JSONLD = {
     name: "Cabinet Dentaire Dandelion",
     url: `${SITE_URL}/`,
   },
+  openingHoursSpecification: HORAIRES_JSONLD,
   sameAs: ["https://www.doctolib.fr/orthodontiste/bussac-foret/lucas-detant-bussac-foret"],
 };
 
@@ -147,8 +152,9 @@ function OrthodontiePage() {
       </section>
 
       {/* ───── Le praticien ───── */}
-      <section id="specialite" className="px-6 pb-28">
-        <div className="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-12">
+      <section id="specialite" className="relative overflow-hidden px-6 pb-28">
+        <Filigrane numero="II" className="-right-10 top-0 hidden lg:block" />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-12">
           <div className="md:col-span-5">
             <Tirage
               src={drDetantUrl}
@@ -186,7 +192,7 @@ function OrthodontiePage() {
 
       {/* ───── Premier bilan ───── */}
       <section className="px-6 pb-28">
-        <div className="reveal mx-auto grid max-w-6xl items-center gap-8 rounded-[1.75rem] bg-sand px-8 py-12 text-ink md:grid-cols-12 md:px-14">
+        <div className="reveal mx-auto grid max-w-6xl items-center gap-8 trame rounded-[1.75rem] bg-sand px-8 py-12 text-ink md:grid-cols-12 md:px-14">
           <div className="md:col-span-8">
             <h2 className="font-serif text-4xl leading-[1.08] md:text-5xl">
               Pour un enfant, le premier bilan se fait vers 7 ou 8 ans
@@ -235,6 +241,8 @@ function OrthodontiePage() {
         </div>
       </section>
 
+      <CulDeLampe className="pb-20" />
+
       {/* ───── Contact ───── */}
       <section id="contact" className="bg-forest-deep px-6 py-28">
         <div className="mx-auto grid max-w-6xl gap-16 md:grid-cols-12">
@@ -274,6 +282,19 @@ function OrthodontiePage() {
                       <a href={`mailto:${MAIL}`} className="break-all hover:text-gold">
                         {MAIL}
                       </a>
+                    ),
+                  },
+                  {
+                    label: "Horaires",
+                    value: (
+                      <span className="block space-y-1">
+                        {HORAIRES.map((h) => (
+                          <span key={h.jours} className="block">
+                            <span className="text-lichen">{h.jours} : </span>
+                            {h.heures}
+                          </span>
+                        ))}
+                      </span>
                     ),
                   },
                   { label: "Accès", value: "Parking gratuit à proximité" },

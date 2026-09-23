@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { Phone } from "lucide-react";
 import logoUrl from "@/assets/logo-gold.png";
 
@@ -9,6 +9,34 @@ export const PHONE_TEL = "tel:+33546707287";
 export const MAIL = "secretariat@dentairebussacforet.fr";
 export const DOCTOLIB_ORTHO_URL =
   "https://www.doctolib.fr/orthodontiste/bussac-foret/lucas-detant-bussac-foret";
+/** Horaires d'ouverture du cabinet, source unique pour l'affichage et les données structurées. */
+export const HORAIRES = [
+  { jours: "Lundi, mardi, mercredi", heures: "9h — 13h et 14h — 18h" },
+  { jours: "Jeudi", heures: "9h — 13h" },
+  { jours: "Vendredi, samedi, dimanche", heures: "Fermé" },
+];
+
+export const HORAIRES_JSONLD = [
+  {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday"],
+    opens: "09:00",
+    closes: "13:00",
+  },
+  {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday"],
+    opens: "14:00",
+    closes: "18:00",
+  },
+  {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Thursday"],
+    opens: "09:00",
+    closes: "13:00",
+  },
+];
+
 export const MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=26+Place+du+Champ+de+Foire%2C+17210+Bussac-For%C3%AAt";
 
@@ -50,6 +78,29 @@ export function Planche({
   );
 }
 
+/** Numéro de planche en filigrane, posé en fond de section comme sur une gravure. */
+export function Filigrane({
+  numero,
+  tone = "forest",
+  className = "",
+}: {
+  numero: string;
+  tone?: "forest" | "light";
+  className?: string;
+}) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`pointer-events-none absolute select-none font-serif leading-none ${
+        tone === "forest" ? "text-gold/[0.055]" : "text-[#8a6b2c]/[0.07]"
+      } ${className}`}
+      style={{ fontSize: "clamp(14rem, 26vw, 26rem)" }}
+    >
+      {numero}
+    </span>
+  );
+}
+
 /* ───────────── Illustrations anatomiques au trait ───────────── */
 
 const TOOTH_PATHS = {
@@ -73,13 +124,15 @@ export type ToothKind = keyof typeof TOOTH_PATHS | "gencive";
 export function Tooth({ kind, className = "" }: { kind: ToothKind; className?: string }) {
   const t = TOOTH_PATHS[kind === "gencive" ? "incisive" : kind];
   return (
-    <svg viewBox={t.viewBox} aria-hidden="true" fill="none" className={className}>
+    <svg viewBox={t.viewBox} aria-hidden="true" fill="none" className={`trace ${className}`}>
       <path
         d={t.d}
         stroke="currentColor"
         strokeWidth="1.4"
         strokeLinejoin="round"
         vectorEffect="non-scaling-stroke"
+        pathLength={1}
+        data-trace
       />
       {kind === "gencive" && (
         <path
@@ -88,9 +141,65 @@ export function Tooth({ kind, className = "" }: { kind: ToothKind; className?: s
           strokeWidth="1.2"
           strokeDasharray="4 5"
           vectorEffect="non-scaling-stroke"
+          data-trace-fade
         />
       )}
     </svg>
+  );
+}
+
+/** Bord déchiré : lisière de papier entre deux fonds, tracée en SVG. */
+export function BordDeckle({
+  couleur = "var(--sand)",
+  position = "haut",
+  className = "",
+}: {
+  couleur?: string;
+  position?: "haut" | "bas";
+  className?: string;
+}) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 1440 18"
+      preserveAspectRatio="none"
+      className={`block h-[14px] w-full ${position === "bas" ? "rotate-180" : ""} ${className}`}
+    >
+      <path
+        fill={couleur}
+        d="M0 18V9.2c36-2.1 72 1.4 108 2.2s72-1.9 108-3.4 72-2.2 108-.7 72 4.6 108 4.8 72-2.5 108-4.1 72-2.3 108-.9 72 4.2 108 4.5 72-2.1 108-3.8 72-2.4 108-1.2 72 4 108 4.4 72-2 108-3.6 72-2.5 108-1.6c36 .9 72 3.4 108 4.3s72 .3 108-.6V18Z"
+      />
+    </svg>
+  );
+}
+
+/** Cul-de-lampe : fleuron de fin de chapitre, une dent au trait entre deux filets. */
+export function CulDeLampe({
+  tone = "forest",
+  className = "",
+}: {
+  tone?: "forest" | "light";
+  className?: string;
+}) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`flex items-center justify-center gap-5 ${
+        tone === "forest" ? "text-gold/60" : "text-[#8a6b2c]/60"
+      } ${className}`}
+    >
+      <span className="h-px w-16 bg-current sm:w-24" />
+      <svg viewBox="0 0 84 136" fill="none" className="h-9 w-6">
+        <path
+          d="M40 10 C54 8 62 14 62 30 C62 46 56 54 54 70 C52 96 48 118 42 120 C36 118 32 96 30 70 C28 54 22 46 22 30 C22 14 30 10 40 10Z"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
+      <span className="h-px w-16 bg-current sm:w-24" />
+    </div>
   );
 }
 
@@ -104,26 +213,52 @@ export function MolaireAnnotee({ className = "" }: { className?: string }) {
         height="170"
         fill="none"
         aria-hidden="true"
-        className="shrink-0 text-gold"
+        className="trace shrink-0 text-gold"
       >
         <g stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M42 40 C42 16 60 10 70 20 C76 12 90 12 96 20 C106 10 124 16 124 40 C124 64 117 78 112 110 C109 128 99 128 97 110 L90 76 C88 68 78 68 76 76 L69 110 C67 128 57 128 54 110 C49 78 42 64 42 40 Z" />
+          <path
+            pathLength={1}
+            data-trace
+            d="M42 40 C42 16 60 10 70 20 C76 12 90 12 96 20 C106 10 124 16 124 40 C124 64 117 78 112 110 C109 128 99 128 97 110 L90 76 C88 68 78 68 76 76 L69 110 C67 128 57 128 54 110 C49 78 42 64 42 40 Z"
+          />
           <path
             d="M60 44 C64 34 74 34 78 42 M88 42 C92 34 102 34 106 44"
             strokeWidth="0.8"
             opacity="0.7"
+            pathLength={1}
+            data-trace
+            style={{ "--i": 2 } as CSSProperties}
           />
           <path
             d="M44 58 C70 64 96 64 122 58"
             strokeWidth="0.8"
             strokeDasharray="3 4"
             opacity="0.8"
+            data-trace-fade
           />
-          <line x1="124" y1="34" x2="148" y2="22" strokeWidth="0.8" />
-          <line x1="100" y1="118" x2="148" y2="146" strokeWidth="0.8" />
+          <line
+            x1="124"
+            y1="34"
+            x2="148"
+            y2="22"
+            strokeWidth="0.8"
+            pathLength={1}
+            data-trace
+            style={{ "--i": 4 } as CSSProperties}
+          />
+          <line
+            x1="100"
+            y1="118"
+            x2="148"
+            y2="146"
+            strokeWidth="0.8"
+            pathLength={1}
+            data-trace
+            style={{ "--i": 5 } as CSSProperties}
+          />
         </g>
-        <circle cx="148" cy="22" r="2" fill="currentColor" />
-        <circle cx="148" cy="146" r="2" fill="currentColor" />
+        <circle cx="148" cy="22" r="2" fill="currentColor" data-trace-fade />
+        <circle cx="148" cy="146" r="2" fill="currentColor" data-trace-fade />
       </svg>
       <div className="flex h-[150px] flex-col justify-between font-serif text-lg italic text-parchment">
         <span>
@@ -175,7 +310,7 @@ export function ArcadeDentaire({
     <figure className={`m-0 flex flex-col items-center gap-3 ${className}`}>
       <svg
         viewBox="0 0 460 330"
-        className="w-full max-w-[460px] text-gold"
+        className="trace w-full max-w-[460px] text-gold"
         fill="none"
         aria-hidden="true"
       >
@@ -190,6 +325,9 @@ export function ArcadeDentaire({
             stroke="currentColor"
             strokeWidth="1.4"
             transform={`rotate(${t.rot.toFixed(1)} ${t.x.toFixed(1)} ${t.y.toFixed(1)})`}
+            pathLength={1}
+            data-trace
+            style={{ "--i": Math.abs(i - (count - 1) / 2) } as CSSProperties}
           />
         ))}
         {labels.map((l) => (
@@ -200,6 +338,7 @@ export function ArcadeDentaire({
             fill="currentColor"
             fontFamily="Newsreader, Georgia, serif"
             fontSize="15"
+            data-trace-fade
           >
             {l.n}
           </text>
@@ -456,6 +595,10 @@ export function SiteFooter({
           © {new Date().getFullYear()} {signature}
         </p>
       </div>
+      <p className="mx-auto mt-8 max-w-6xl border-t border-line pt-6 text-center text-[11px] uppercase tracking-[0.2em] text-lichen/80">
+        Composé en Newsreader &amp; Source Sans 3 · Planches dessinées au trait · Bussac-Forêt,
+        MMXXVI
+      </p>
     </footer>
   );
 }
